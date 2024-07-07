@@ -1,10 +1,10 @@
-export function initializeUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
+export function initializeUpgrade2(priceDisplay, qtdDisplay) {
 
-    console.log("\n\nCriando Up1\n");
+    console.log("\n\nCriando Up2\n");
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = parseInt(localStorage.getItem("price1")) || 10;
-    let qtd = parseInt(localStorage.getItem("qtd1")) || 0;
+    let price = parseInt(localStorage.getItem("price2")) || 50;
+    let qtd = parseInt(localStorage.getItem("qtd2")) || 0;
 
     priceDisplay.innerText = price;
     qtdDisplay.innerText = qtd;
@@ -12,16 +12,16 @@ export function initializeUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
     console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
 }
 
-let upgrade1IntervalId;
+let upgrade2IntervalId;
 
-export function applyUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
-
-    console.log("\n\nComprando Up1\n");
+export function applyUpgrade2(priceDisplay, qtdDisplay) {
+    console.log("\n\nComprando Up2\n");
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = parseInt(localStorage.getItem("price1")) || 10;
-    let qtd = parseInt(localStorage.getItem("qtd1")) || 0;
+    let price = parseInt(localStorage.getItem("price2")) || 50;
+    let qtd = parseInt(localStorage.getItem("qtd2")) || 0;
     let contador = document.getElementById('contador');
+
 
     if (melancias >= price) {
         localStorage.setItem("melancias", (melancias -= price));
@@ -29,26 +29,22 @@ export function applyUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
         price = Math.ceil(price * 1.2);
         priceDisplay.innerText = price;
         qtdDisplay.innerText = ++qtd;
-        localStorage.setItem("price1", price);
-        localStorage.setItem("qtd1", qtd);
+        localStorage.setItem("price2", price);
+        localStorage.setItem("qtd2", qtd);
 
         console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
 
-        if (upgrade1IntervalId) {
-            clearInterval(upgrade1IntervalId);
+        if (upgrade2IntervalId) {
+            clearInterval(upgrade2IntervalId);
         }
 
-        let vel = (1000 / (5000 / qtd)).toFixed(2);
-
-        upgrade1IntervalId = setInterval(() => {
+        upgrade2IntervalId = setInterval(() => {
             melancias = parseInt(localStorage.getItem("melancias"));
             localStorage.setItem("melancias", (melancias + 1));
             contador.innerText = parseInt(localStorage.getItem("melancias"));
-        }, 5000 / qtd);
-
-        velDisplay.innerText = vel;
+        }, 3000 / qtd);
 
     } else {
-        console.log("Melancias insuficientes para Up1");
+        console.log("Melancias insuficientes para Up2");
     }
 }

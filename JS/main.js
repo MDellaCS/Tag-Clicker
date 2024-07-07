@@ -1,22 +1,37 @@
-import { initializeUpgrade, applyUpgrade } from './up1.js';
-import { updateTags } from './utils.js';
+import { applyUpgrade1, initializeUpgrade1 } from "./up1.js";
+import { applyUpgrade2, initializeUpgrade2 } from "./up2.js";
 
-let mainClicker = document.getElementById('mainClicker');
-let clickCounter = document.getElementById('clickCounter');
-let upgradePriceDisplay = document.getElementById('upgradePrice');
+let melancia = document.getElementById('melancia');
+let contador = document.getElementById('contador');
 
-let cont = parseInt(localStorage.getItem("clicks")) || 0;
-clickCounter.innerText = cont;
+let melancias = parseInt(localStorage.getItem("melancias")) || 0;
+if (melancias === 0) {
+    localStorage.setItem("melancias", 0);
+}
+contador.innerText = melancias;
 
-mainClicker.addEventListener('click', () => {
-    clickCounter.innerText = ++cont;
-    localStorage.setItem("clicks", cont);
+melancia.addEventListener('click', () => {
+    melancias = parseInt(localStorage.getItem("melancias"));
+    contador.innerText = (melancias += 300);; //++melancias; (melancias += 3000);
+    localStorage.setItem("melancias", melancias);
 });
 
-initializeUpgrade(up1, upgradePriceDisplay, cont);
+let up1 = document.getElementById('up1');
+let priceDisplay1 = document.getElementById('priceDisplay1');
+let qtdDisplay1 = document.getElementById('qtdDisplay1');
+let velDisplay1 = document.getElementById('velDisplay1');
 
+initializeUpgrade1(priceDisplay1, qtdDisplay1, velDisplay1);
 up1.addEventListener('click', () => {
-    cont = applyUpgrade(cont, up1, upgradePriceDisplay);
-    localStorage.setItem("clicks", cont);
-    updateTags(mainClicker, upgradePriceDisplay, cont);
+    applyUpgrade1(priceDisplay1, qtdDisplay1, velDisplay1);
+});
+
+let up2 = document.getElementById('up2');
+let priceDisplay2 = document.getElementById('priceDisplay2');
+let qtdDisplay2 = document.getElementById('qtdDisplay2');
+let velDisplay2 = document.getElementById('velDisplay2');
+
+initializeUpgrade2(priceDisplay2, qtdDisplay2, velDisplay2);
+up2.addEventListener('click', () => {
+    applyUpgrade2(priceDisplay2, qtdDisplay2, velDisplay2);
 });

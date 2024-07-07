@@ -15,7 +15,7 @@
         --main: #774936;
         --main2: linear-gradient(22deg, #774936, #653a2a);
         --main3: linear-gradient(22deg, #00b4d8, #00b4d8);
-        --bg: #ffece2;
+        --bg: #ffffff;
         --main-hover: linear-gradient(80deg, #642919, #b1634e);
         --h1: #000000;
         --h2: #333333;
@@ -42,16 +42,19 @@ body {
     background: fixed var(--bg);
 }
 
-/* ---------------------------------------------------------------- MAINCLICKER */
+/* ---------------------------------------------------------------- melancia-container */
 
-.mainClicker {
-    background: red;
-    font-size: 4rem;
+
+
+#melancia {
     cursor: pointer;
+    width: 12rem;
+    height: 12rem;
+    margin: 2rem 0 2rem 0;
 }
 
-.mainClicker:active {
-    transform: scale(0.99);
+#melancia:active {
+    transform: scale(0.95);
 }
 
 /* ---------------------------------------------------------------- CLICKCOUNTER */
@@ -66,7 +69,7 @@ body {
 /* ---------------------------------------------------------------- UPGRADES */
 
 .game-container {
-    background: purple;
+    box-shadow: inset 0 0 0 5px red;
     margin: 1rem;
     font-size: 1rem;
     display: flex;
@@ -74,28 +77,45 @@ body {
     height: 80vh;
 }
 
-.upgrade-container,
-.mainClicker,
-.clickCounter {
+#upgrade-container,
+#jao-container,
+#upgrade-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
 }
 
-.upgrade-container {
-    background: yellowgreen;
-    font-size: 1rem;
-    width: 100%;
-    height: 100%;
+#melancia-container {
+    font-family: var(--fontTitle);
+    box-shadow: inset 0 0 0 5px green;
+    font-size: 2rem;
+    padding: 3rem;
+    text-align: center;
 }
 
-.upgrade-container .upgrade {
-    background: red;
-    font-size: 1rem;
+#upgrade-container {
+    box-shadow: inset 0 0 0 5px yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#upgrade-container .upgrade {
+    text-align: center;
+    font-family: var(--fontText);
+    padding: 1rem 0 1rem 0;
+    display: inline-block;
+    box-shadow: inset 0 0 0 5px blue;
+    font-size: 2rem;
     width: 100%;
-    height: 100%;
+    color: white;
+    background-image: url(images/upgradeBG.png);
+    cursor: pointer;
+}
+
+#upgrade-container .upgrade:active {
+    transform: scale(0.95);
 }
 
 /* ---------------------------------------------------------------- INPUT */
@@ -156,17 +176,16 @@ body {
     font-weight: 500;
     text-align: center;
     color: var(--h1);
-    margin: 2rem 0.5rem 2rem 0.5rem;
+    margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .h2 {
     font-family: var(--fontText);
     font-size: 1rem;
     font-weight: 300;
-    text-align: justify;
-    line-height: 1.6rem;
+    text-align: center;
     color: var(--h2);
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 0 0;
 }
 
 .lbl {
