@@ -41,9 +41,9 @@ export function applyUpgrade(upgradeConfig) {
 
         intervals[upgradeConfig.name] = setInterval(() => {
             melancias = parseInt(localStorage.getItem("melancias"));
-            localStorage.setItem("melancias", (melancias + 1));
+            localStorage.setItem("melancias", (melancias + qtd));
             contador.innerText = parseInt(localStorage.getItem("melancias"));
-        }, upgradeConfig.productionRate / qtd);
+        }, upgradeConfig.productionRate);
 
         upgradeConfig.velDisplay.innerText = vel;
 

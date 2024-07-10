@@ -63,48 +63,36 @@ body {
     padding: 0;
 }
 
-/* ---------------------------------------------------------------- CLICKCOUNTER */
-
-.clickCounter {
-    background: green;
-    margin: 2rem;
-    padding: 2rem;
-    font-size: 1rem;
-}
-
 /* ---------------------------------------------------------------- UPGRADES */
 
 .game-container {
-    box-shadow: inset 0 0 0 5px red;
-    margin: 1rem;
-    font-size: 1rem;
     display: flex;
     flex-direction: row;
     height: 80vh;
+    border: 1rem solid #ffffff;
+    border-image: url(images/text.png) 600 repeat;
 }
 
-#upgrade-container,
+#melancia-container,
 #jao-container,
 #upgrade-container {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #melancia-container {
     font-family: var(--fontTitle);
-    box-shadow: inset 0 0 0 5px green;
     font-size: 2rem;
-    padding: 3rem;
     text-align: center;
+    border-right: 1rem solid #ffffff;
+    border-image: url(images/text.png) 600 repeat;
 }
 
 #upgrade-container {
-    box-shadow: inset 0 0 0 5px yellow;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-left: 1rem solid #ffffff;
+    border-image: url(images/text.png) 600 repeat;
 }
 
 #upgrade-container .upgrade {
@@ -112,12 +100,35 @@ body {
     font-family: var(--fontText);
     padding: 1rem 0 1rem 0;
     display: inline-block;
-    box-shadow: inset 0 0 0 5px blue;
     font-size: 2rem;
     width: 100%;
     color: white;
-    background: gray;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: gray;
+    border-top: 1rem solid #ffffff;
+    border-image: url(images/text.png) 600 repeat;
+
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 6rem 6rem;
+}
+
+#up1 {
+    background-image: url(images/upgrades/horta.png);
+}
+
+#up2 {
+    background-image: url(images/upgrades/fazenda.png);
+}
+
+#up3 {
+    background-image: url(images/upgrades/cidade.png);
+}
+
+#up4 {
+    background-image: url(images/upgrades/planeta.png);
 }
 
 #upgrade-container .upgrade:active {
@@ -258,6 +269,20 @@ body {
     animation-duration: .1s;
 }
 
+@keyframes floatOut {
+
+    0% {}
+
+    100% {
+        opacity: 0;
+        transform: translateY(-75px);
+    }
+}
+
+.floatOut {
+    animation: floatOut 2s forwards;
+}
+
 @keyframes shiver {
 
     0% {
@@ -307,3 +332,13 @@ body {
 }
 
 /* ---------------------------------------------------------------- TESTS */
+
+.floating-text {
+    position: absolute;
+    pointer-events: none;
+    font-family: var(--fontTitle);
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    color: green;
+}
