@@ -27,6 +27,7 @@
 * {
     padding: 0;
     margin: 0;
+    user-select: none;
 }
 
 *:focus {
@@ -44,8 +45,6 @@ body {
 
 /* ---------------------------------------------------------------- melancia-container */
 
-
-
 #melancia {
     cursor: pointer;
     width: 12rem;
@@ -55,6 +54,13 @@ body {
 
 #melancia:active {
     transform: scale(0.95);
+}
+
+#melanciazinha {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 .7rem -.2rem 0;
+    padding: 0;
 }
 
 /* ---------------------------------------------------------------- CLICKCOUNTER */
@@ -110,7 +116,7 @@ body {
     font-size: 2rem;
     width: 100%;
     color: white;
-    background-image: url(images/upgradeBG.png);
+    background: gray;
     cursor: pointer;
 }
 

@@ -1,5 +1,5 @@
-import { applyUpgrade1, initializeUpgrade1 } from "./up1.js";
-import { applyUpgrade2, initializeUpgrade2 } from "./up2.js";
+import { upgradeConfig } from './upgradeConfig.js';
+import { initializeUpgrade, applyUpgrade } from './up1.js';
 
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
@@ -16,22 +16,22 @@ melancia.addEventListener('click', () => {
     localStorage.setItem("melancias", melancias);
 });
 
-let up1 = document.getElementById('up1');
-let priceDisplay1 = document.getElementById('priceDisplay1');
-let qtdDisplay1 = document.getElementById('qtdDisplay1');
-let velDisplay1 = document.getElementById('velDisplay1');
+for (let key in upgradeConfig) {
+    initializeUpgrade(upgradeConfig[key]);
+}
 
-initializeUpgrade1(priceDisplay1, qtdDisplay1, velDisplay1);
-up1.addEventListener('click', () => {
-    applyUpgrade1(priceDisplay1, qtdDisplay1, velDisplay1);
+document.getElementById('up1').addEventListener('click', () => {
+    applyUpgrade(upgradeConfig.upgrade1);
 });
 
-let up2 = document.getElementById('up2');
-let priceDisplay2 = document.getElementById('priceDisplay2');
-let qtdDisplay2 = document.getElementById('qtdDisplay2');
-let velDisplay2 = document.getElementById('velDisplay2');
+document.getElementById('up2').addEventListener('click', () => {
+    applyUpgrade(upgradeConfig.upgrade2);
+});
 
-initializeUpgrade2(priceDisplay2, qtdDisplay2, velDisplay2);
-up2.addEventListener('click', () => {
-    applyUpgrade2(priceDisplay2, qtdDisplay2, velDisplay2);
+document.getElementById('up3').addEventListener('click', () => {
+    applyUpgrade(upgradeConfig.upgrade3);
+});
+
+document.getElementById('up4').addEventListener('click', () => {
+    applyUpgrade(upgradeConfig.upgrade4);
 });

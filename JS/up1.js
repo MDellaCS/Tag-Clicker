@@ -1,54 +1,53 @@
-export function initializeUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
+let intervals = {};
 
-    console.log("\n\nCriando Up1\n");
+export function initializeUpgrade(upgradeConfig) {
+    console.log(`\n\nCriando ${upgradeConfig.name}\n`);
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = parseInt(localStorage.getItem("price1")) || 10;
-    let qtd = parseInt(localStorage.getItem("qtd1")) || 0;
+    let price = parseInt(localStorage.getItem(`${upgradeConfig.name}Price`)) || upgradeConfig.initialPrice;
+    let qtd = parseInt(localStorage.getItem(`${upgradeConfig.name}Qtd`)) || 0;
 
-    priceDisplay.innerText = price;
-    qtdDisplay.innerText = qtd;
+    upgradeConfig.nameDisplay.innerText = upgradeConfig.name;
+    upgradeConfig.priceDisplay.innerText = price;
+    upgradeConfig.qtdDisplay.innerText = qtd;
 
     console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
 }
 
-let upgrade1IntervalId;
-
-export function applyUpgrade1(priceDisplay, qtdDisplay, velDisplay) {
-
-    console.log("\n\nComprando Up1\n");
+export function applyUpgrade(upgradeConfig) {
+    console.log(`\n\nComprando ${upgradeConfig.name}\n`);
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = parseInt(localStorage.getItem("price1")) || 10;
-    let qtd = parseInt(localStorage.getItem("qtd1")) || 0;
+    let price = parseInt(localStorage.getItem(`${upgradeConfig.name}Price`)) || upgradeConfig.initialPrice;
+    let qtd = parseInt(localStorage.getItem(`${upgradeConfig.name}Qtd`)) || 0;
     let contador = document.getElementById('contador');
 
     if (melancias >= price) {
         localStorage.setItem("melancias", (melancias -= price));
         contador.innerText = parseInt(localStorage.getItem("melancias"));
-        price = Math.ceil(price * 1.2);
-        priceDisplay.innerText = price;
-        qtdDisplay.innerText = ++qtd;
-        localStorage.setItem("price1", price);
-        localStorage.setItem("qtd1", qtd);
+        price = Math.ceil(price * upgradeConfig.priceMultiplier);
+        upgradeConfig.priceDisplay.innerText = price;
+        upgradeConfig.qtdDisplay.innerText = ++qtd;
+        localStorage.setItem(`${upgradeConfig.name}Price`, price);
+        localStorage.setItem(`${upgradeConfig.name}Qtd`, qtd);
 
         console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
 
-        if (upgrade1IntervalId) {
-            clearInterval(upgrade1IntervalId);
+        if (intervals[upgradeConfig.name]) {
+            clearInterval(intervals[upgradeConfig.name]);
         }
 
-        let vel = (1000 / (5000 / qtd)).toFixed(2);
+        let vel = (1000 / (upgradeConfig.productionRate / qtd)).toFixed(2);
 
-        upgrade1IntervalId = setInterval(() => {
+        intervals[upgradeConfig.name] = setInterval(() => {
             melancias = parseInt(localStorage.getItem("melancias"));
             localStorage.setItem("melancias", (melancias + 1));
             contador.innerText = parseInt(localStorage.getItem("melancias"));
-        }, 5000 / qtd);
+        }, upgradeConfig.productionRate / qtd);
 
-        velDisplay.innerText = vel;
+        upgradeConfig.velDisplay.innerText = vel;
 
     } else {
-        console.log("Melancias insuficientes para Up1");
+        console.log(`Melancias insuficientes para ${upgradeConfig.name}`);
     }
 }
