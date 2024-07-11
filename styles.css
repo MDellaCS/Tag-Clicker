@@ -15,7 +15,7 @@
         --main: #774936;
         --main2: linear-gradient(22deg, #774936, #653a2a);
         --main3: linear-gradient(22deg, #00b4d8, #00b4d8);
-        --bg: #ffffff;
+        --bg: #ffb2b2;
         --main-hover: linear-gradient(80deg, #642919, #b1634e);
         --h1: #000000;
         --h2: #333333;
@@ -40,10 +40,10 @@ body {
 }
 
 body {
-    background: fixed var(--bg);
+    background: var(--bg);
 }
 
-/* ---------------------------------------------------------------- melancia-container */
+/* ---------------------------------------------------------------- MELANCIA */
 
 #melancia {
     cursor: pointer;
@@ -63,8 +63,6 @@ body {
     padding: 0;
 }
 
-/* ---------------------------------------------------------------- UPGRADES */
-
 .game-container {
     display: flex;
     flex-direction: row;
@@ -75,7 +73,7 @@ body {
 
 #melancia-container,
 #jao-container,
-#upgrade-container {
+#building-container {
     flex: 1;
 }
 
@@ -87,7 +85,27 @@ body {
     border-image: url(images/text.png) 600 repeat;
 }
 
+/* ---------------------------------------------------------------- UPGRADES */
+
 #upgrade-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.upgrade {
+    cursor: pointer;
+    width: 3rem;
+}
+
+.upgrade:active {
+    filter: brightness(110%);
+}
+
+/* ---------------------------------------------------------------- BUILDINGS */
+
+#building-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -95,7 +113,7 @@ body {
     border-image: url(images/text.png) 600 repeat;
 }
 
-#upgrade-container .upgrade {
+.building {
     text-align: center;
     font-family: var(--fontText);
     padding: 1rem 0 1rem 0;
@@ -115,24 +133,24 @@ body {
     background-size: 6rem 6rem;
 }
 
-#up1 {
-    background-image: url(images/upgrades/horta.png);
+.building:active {
+    filter: brightness(110%);
 }
 
-#up2 {
-    background-image: url(images/upgrades/fazenda.png);
+#building1 {
+    background-image: url(images/buildings/horta.png);
 }
 
-#up3 {
-    background-image: url(images/upgrades/cidade.png);
+#building2 {
+    background-image: url(images/buildings/fazenda.png);
 }
 
-#up4 {
-    background-image: url(images/upgrades/planeta.png);
+#building3 {
+    background-image: url(images/buildings/cidade.png);
 }
 
-#upgrade-container .upgrade:active {
-    transform: scale(0.95);
+#building4 {
+    background-image: url(images/buildings/planeta.png);
 }
 
 /* ---------------------------------------------------------------- INPUT */
@@ -275,12 +293,12 @@ body {
 
     100% {
         opacity: 0;
-        transform: translateY(-75px);
+        transform: translateY(-60px);
     }
 }
 
 .floatOut {
-    animation: floatOut 2s forwards;
+    animation: floatOut 4s forwards;
 }
 
 @keyframes shiver {
@@ -340,5 +358,4 @@ body {
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
-    color: green;
 }
