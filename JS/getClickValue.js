@@ -6,7 +6,7 @@ export function getClickValue() {
 
     for (let key in upgradeConfig) {
         if (upgradesPurchased[upgradeConfig[key].name]) {
-            clickValue += (upgradeConfig[key].effect - 1) * upgradesPurchased[upgradeConfig[key].name];
+            clickValue += (upgradeConfig[key].effect) * upgradesPurchased[upgradeConfig[key].name];
         }
     }
 

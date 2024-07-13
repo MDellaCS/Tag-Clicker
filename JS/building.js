@@ -3,25 +3,27 @@ import { buildingConfig } from './buildingConfig.js';
 
 let intervals = {};
 
-for (let key in buildingConfig) {
-    initializeBuilding(buildingConfig[key]);
+export function loadBuildings() {
+    for (let key in buildingConfig) {
+        initializeBuilding(buildingConfig[key]);
+    }
+
+    document.getElementById('building1').addEventListener('click', (event) => {
+        applyBuilding(event.clientX, event.clientY, buildingConfig.building1);
+    });
+
+    document.getElementById('building2').addEventListener('click', (event) => {
+        applyBuilding(event.clientX, event.clientY, buildingConfig.building2);
+    });
+
+    document.getElementById('building3').addEventListener('click', (event) => {
+        applyBuilding(event.clientX, event.clientY, buildingConfig.building3);
+    });
+
+    document.getElementById('building4').addEventListener('click', (event) => {
+        applyBuilding(event.clientX, event.clientY, buildingConfig.building4);
+    });
 }
-
-document.getElementById('building1').addEventListener('click', (event) => {
-    applyBuilding(event.clientX, event.clientY, buildingConfig.building1);
-});
-
-document.getElementById('building2').addEventListener('click', (event) => {
-    applyBuilding(event.clientX, event.clientY, buildingConfig.building2);
-});
-
-document.getElementById('building3').addEventListener('click', (event) => {
-    applyBuilding(event.clientX, event.clientY, buildingConfig.building3);
-});
-
-document.getElementById('building4').addEventListener('click', (event) => {
-    applyBuilding(event.clientX, event.clientY, buildingConfig.building4);
-});
 
 export function initializeBuilding(buildingConfig) {
     console.log(`\n\nCriando ${buildingConfig.name}\n`);

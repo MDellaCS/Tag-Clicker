@@ -1,36 +1,31 @@
 import { createFloatingText } from './createFloatingText.js';
 import { upgradeConfig } from './upgradeConfig.js';
 
-for (let key in upgradeConfig) {
-    initializeUpgrade(upgradeConfig[key]);
+export function loadUpgrades() {
+    const upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};  
+
+    for (let key in upgradeConfig) {
+        const upgrade = upgradeConfig[key];
+
+        if (!upgradesPurchased[upgrade.name]) {
+            initializeUpgrade(upgrade);
+
+            document.getElementById(key).addEventListener('click', (event) => {
+                applyUpgrade(event.clientX, event.clientY, upgrade, key);
+            });
+        }
+    }
 }
-
-document.getElementById('upgrade1').addEventListener('click', (event) => {
-    applyUpgrade(event.clientX, event.clientY, upgradeConfig.upgrade1);
-});
-
-document.getElementById('upgrade2').addEventListener('click', (event) => {
-    applyUpgrade(event.clientX, event.clientY, upgradeConfig.upgrade2);
-});
-
-document.getElementById('upgrade3').addEventListener('click', (event) => {
-    applyUpgrade(event.clientX, event.clientY, upgradeConfig.upgrade3);
-});
-
-document.getElementById('upgrade4').addEventListener('click', (event) => {
-    applyUpgrade(event.clientX, event.clientY, upgradeConfig.upgrade4);
-});
 
 export function initializeUpgrade(upgradeConfig) {
     console.log(`\n\nCriando ${upgradeConfig.name}\n`);
 
-    let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = upgradeConfig.price;
-
-    console.log("Melancias: " + melancias + "\nPreço: " + price);
+    upgradeConfig.nameDisplay.innerText = upgradeConfig.name;
+    upgradeConfig.descDisplay.innerText = upgradeConfig.description;
+    upgradeConfig.priceDisplay.innerText = upgradeConfig.price;
 }
 
-export function applyUpgrade(x, y, upgradeConfig) {
+export function applyUpgrade(x, y, upgradeConfig, key) {
     console.log(`\n\nComprando ${upgradeConfig.name}\n`);
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
@@ -46,6 +41,11 @@ export function applyUpgrade(x, y, upgradeConfig) {
         localStorage.setItem("upgradesPurchased", JSON.stringify(upgradesPurchased));
 
         createFloatingText(x, y, "Comprou " + upgradeConfig.name, "green");
+
+        const upgradeElement = document.getElementById(key);
+        if (upgradeElement) {
+            upgradeElement.remove();
+        }
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + upgradeConfig.name, "red");

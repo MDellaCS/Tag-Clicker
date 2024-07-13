@@ -1,6 +1,9 @@
 import { getClickValue } from './getClickValue.js';
 import { createFloatingText } from './createFloatingText.js';
 
+import { loadUpgrades } from './upgrade.js';
+import { loadBuildings } from './building.js';
+
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
 
@@ -16,7 +19,7 @@ melancia.addEventListener('click', (event) => {
     contador.innerText = melancias += clickValue;
     localStorage.setItem("melancias", melancias);
 
-    createFloatingText(event.clientX, event.clientY, "+"+clickValue, "green");
+    createFloatingText(event.clientX, event.clientY, "+" + clickValue, "green");
 });
 
 const observer = new MutationObserver((mutationsList) => {
@@ -34,5 +37,5 @@ const config = { subtree: true, characterData: true, childList: true };
 
 observer.observe(contador, config);
 
-
-
+loadUpgrades();
+loadBuildings();
