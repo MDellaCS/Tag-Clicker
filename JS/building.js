@@ -4,75 +4,85 @@ import { buildingConfig } from './buildingConfig.js';
 let intervals = {};
 
 export function loadBuildings() {
+    const buildingsContainer = document.getElementById('buildings');
+
     for (let key in buildingConfig) {
-        initializeBuilding(buildingConfig[key]);
+        const building = buildingConfig[key];
+
+        let price = parseInt(localStorage.getItem(`${building.name}Price`)) || building.initialPrice;
+        let qtd = parseInt(localStorage.getItem(`${building.name}Qtd`)) || 0;
+
+        console.log(building);
+
+        const buildingElement = document.createElement('div');
+        buildingElement.classList.add('building');
+        buildingElement.id = key;
+
+        buildingElement.innerHTML = `
+                <span id="qtd${key}">${qtd}</span> | ${building.name}<br />
+                <img id="melanciazinha" src="images/melanciazinha.png"><span id="price${key}">${price}</span><br />
+                <span id="vel${key}">0</span> mps
+        `;
+
+        buildingsContainer.appendChild(buildingElement);
+
+        document.getElementById(key).addEventListener('click', (event) => {
+            applyBuilding(event.clientX, event.clientY, building, key);
+        });
+
+        let velDisplay = document.getElementById("vel" + key);
+        if (qtd > 0) {
+            startBuildingInterval(building, qtd, velDisplay);
+        }
     }
-
-    document.getElementById('building1').addEventListener('click', (event) => {
-        applyBuilding(event.clientX, event.clientY, buildingConfig.building1);
-    });
-
-    document.getElementById('building2').addEventListener('click', (event) => {
-        applyBuilding(event.clientX, event.clientY, buildingConfig.building2);
-    });
-
-    document.getElementById('building3').addEventListener('click', (event) => {
-        applyBuilding(event.clientX, event.clientY, buildingConfig.building3);
-    });
-
-    document.getElementById('building4').addEventListener('click', (event) => {
-        applyBuilding(event.clientX, event.clientY, buildingConfig.building4);
-    });
 }
 
-export function initializeBuilding(buildingConfig) {
-    console.log(`\n\nCriando ${buildingConfig.name}\n`);
-
-    let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-    let price = parseInt(localStorage.getItem(`${buildingConfig.name}Price`)) || buildingConfig.initialPrice;
-    let qtd = parseInt(localStorage.getItem(`${buildingConfig.name}Qtd`)) || 0;
-
-    buildingConfig.nameDisplay.innerText = buildingConfig.name;
-    buildingConfig.priceDisplay.innerText = price;
-    buildingConfig.qtdDisplay.innerText = qtd;
-
-    console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
-}
-
-export function applyBuilding(x, y, buildingConfig) {
-    console.log(`\n\nComprando ${buildingConfig.name}\n`);
+export function applyBuilding(x, y, buildingConfig, key) {
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
     let price = parseInt(localStorage.getItem(`${buildingConfig.name}Price`)) || buildingConfig.initialPrice;
     let qtd = parseInt(localStorage.getItem(`${buildingConfig.name}Qtd`)) || 0;
     let contador = document.getElementById('contador');
 
+    let priceDisplay = document.getElementById("price" + key);
+    let qtdDisplay = document.getElementById("qtd" + key);
+    let velDisplay = document.getElementById("vel" + key);
+
     if (melancias >= price) {
         localStorage.setItem("melancias", (melancias -= price));
         contador.innerText = parseInt(localStorage.getItem("melancias"));
+
         price = Math.ceil(price * buildingConfig.priceMultiplier);
-        buildingConfig.priceDisplay.innerText = price;
-        buildingConfig.qtdDisplay.innerText = ++qtd;
+        priceDisplay.innerText = price;
         localStorage.setItem(`${buildingConfig.name}Price`, price);
+
+        qtdDisplay.innerText = ++qtd;
         localStorage.setItem(`${buildingConfig.name}Qtd`, qtd);
 
-        console.log("Melancias: " + melancias + "\nPreço: " + price + "\nQuantidade: " + qtd);
-
-        if (intervals[buildingConfig.name]) {
-            clearInterval(intervals[buildingConfig.name]);
-        }
-
         let vel = (1000 / (buildingConfig.productionRate / qtd)).toFixed(2);
+        velDisplay.innerText = vel;
 
-        intervals[buildingConfig.name] = setInterval(() => {
-            melancias = parseInt(localStorage.getItem("melancias"));
-            localStorage.setItem("melancias", (melancias + qtd));
-            contador.innerText = parseInt(localStorage.getItem("melancias"));
-        }, buildingConfig.productionRate);
-
-        buildingConfig.velDisplay.innerText = vel;
+        startBuildingInterval(buildingConfig, qtd, velDisplay);
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + buildingConfig.name, "red");
     }
+}
+
+function startBuildingInterval(buildingConfig, qtd, velDisplay) {
+
+    if (velDisplay) {
+        let vel = (1000 / (buildingConfig.productionRate / qtd)).toFixed(2);
+        velDisplay.innerText = vel;
+    }
+
+    if (intervals[buildingConfig.name]) {
+        clearInterval(intervals[buildingConfig.name]);
+    }
+
+    intervals[buildingConfig.name] = setInterval(() => {
+        let melancias = parseInt(localStorage.getItem("melancias")) || 0;
+        localStorage.setItem("melancias", (melancias + qtd));
+        document.getElementById('contador').innerText = parseInt(localStorage.getItem("melancias"));
+    }, buildingConfig.productionRate);
 }

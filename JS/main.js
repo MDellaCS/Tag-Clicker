@@ -16,7 +16,7 @@ contador.innerText = melancias;
 melancia.addEventListener('click', (event) => {
     melancias = parseInt(localStorage.getItem("melancias"));
     const clickValue = getClickValue();
-    contador.innerText = melancias += clickValue;
+    contador.innerText = melancias += clickValue*1000;
     localStorage.setItem("melancias", melancias);
 
     createFloatingText(event.clientX, event.clientY, "+" + clickValue, "green");

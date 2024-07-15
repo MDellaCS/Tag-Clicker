@@ -43,8 +43,10 @@ body {
     background: var(--bg);
 }
 
-.center{
+.center {
+    width: 100%;
     text-align: center;
+    background-color: #ca9383;
 }
 
 /* ---------------------------------------------------------------- MELANCIA */
@@ -70,44 +72,43 @@ body {
 .game-container {
     display: flex;
     flex-direction: row;
-    height: 80vh;
-    border: 1rem solid #ffffff;
-    border-image: url(images/text.png) 600 repeat;
-}
-
-#melancia-container,
-#jao-container,
-#building-container {
-    flex: 1;
+    height: 95vh;
+    border: 1rem solid red;
 }
 
 #melancia-container {
+    flex: 0 0 25%;
     font-family: var(--fontTitle);
     font-size: 2rem;
     text-align: center;
-    border-right: 1rem solid #ffffff;
-    border-image: url(images/text.png) 600 repeat;
+    border-right: .8rem solid #ffffff;
 }
 
 /* ---------------------------------------------------------------- UPGRADES */
 
 #upgrade-container {
+    flex: 0 0 40%;
+}
+
+#upgrades {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
+    border: solid 3px red;
+    justify-content: center;
 }
 
 .upgrade {
-    position: relative;
-    border: solid 2px red;
     cursor: pointer;
-    width: 3rem;
     text-align: center;
     font-family: var(--fontText);
-    padding: 1rem 0 1rem 0;
+    padding: .2rem;
     display: inline-block;
     font-size: 2rem;
+    border: 1rem solid #ffffff;
+    border-image: url(images/text2.png) 405 600 repeat;
+    background: url(images/text3.png) center/cover no-repeat;
+    margin: 1rem;
 }
 
 .upgrade img {
@@ -121,38 +122,40 @@ body {
 /* ---------------------------------------------------------------- BUILDINGS */
 
 #building-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-left: 1rem solid #ffffff;
-    border-image: url(images/text.png) 600 repeat;
+    border-left: .8rem solid #ffffff;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.building-container::-webkit-scrollbar {
+    display: none;
 }
 
 .building {
+    cursor: pointer;
     text-align: center;
     font-family: var(--fontText);
-    padding: 1rem 0 1rem 0;
+    padding: .2rem;
     display: inline-block;
     font-size: 2rem;
-    width: 100%;
-    color: white;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-color: gray;
-    border-top: 1rem solid #ffffff;
-    border-image: url(images/text.png) 600 repeat;
+    width: 60%;
+    margin: 1rem;
 
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 6rem 6rem;
+    border: 1rem solid #ffffff;
+    border-image: url(images/text2.png) 405 600 repeat;
+    background: url(images/text3.png) center/cover no-repeat;
 }
 
 .building:active {
     filter: brightness(110%);
 }
 
-#building1 {
+/* #building1 {
     background-image: url(images/buildings/horta.png);
 }
 
@@ -166,7 +169,7 @@ body {
 
 #building4 {
     background-image: url(images/buildings/planeta.png);
-}
+} */
 
 /* ---------------------------------------------------------------- INPUT */
 
@@ -256,20 +259,6 @@ body {
     line-height: 1.6rem;
     color: red;
     margin: 1rem 0 2rem 0;
-}
-
-/* ---------------------------------------------------------------- FOOTER */
-
-.footer {
-    text-align: center;
-    margin: 4rem 0 0 0;
-    padding: 1.2rem;
-    background: var(--shadow);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: var(--h2);
 }
 
 .icon {
@@ -369,6 +358,7 @@ body {
 .floating-text {
     position: absolute;
     pointer-events: none;
+    max-width: 360px;
     font-family: var(--fontTitle);
     font-size: 2rem;
     font-weight: 500;
@@ -379,7 +369,8 @@ body {
     visibility: hidden;
     position: absolute;
     z-index: 1;
-    background-color: #747474;
+    background-color: #ff8c8c;
+    border: solid .2em #ff7b7b;
     width: 240px;
     padding: 1rem;
 }

@@ -2,27 +2,34 @@ import { createFloatingText } from './createFloatingText.js';
 import { upgradeConfig } from './upgradeConfig.js';
 
 export function loadUpgrades() {
-    const upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};  
+    const upgradesContainer = document.getElementById('upgrades');
+    const upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
     for (let key in upgradeConfig) {
         const upgrade = upgradeConfig[key];
 
         if (!upgradesPurchased[upgrade.name]) {
-            initializeUpgrade(upgrade);
+
+            const upgradeElement = document.createElement('div');
+            upgradeElement.classList.add('upgrade');
+            upgradeElement.id = key;
+
+            upgradeElement.innerHTML = `
+                <img id="melanciazinha" src="images/melanciazinha.png"><span>${upgrade.price}</span><br />
+                <img src="images/upgrades/${key}.png">
+                <div class="tooltip">
+                    <span class="h1">${upgrade.name}</span><br />
+                    <span class="h2">${upgrade.description}</span>
+                </div>
+            `;
+
+            upgradesContainer.appendChild(upgradeElement);
 
             document.getElementById(key).addEventListener('click', (event) => {
                 applyUpgrade(event.clientX, event.clientY, upgrade, key);
             });
         }
     }
-}
-
-export function initializeUpgrade(upgradeConfig) {
-    console.log(`\n\nCriando ${upgradeConfig.name}\n`);
-
-    upgradeConfig.nameDisplay.innerText = upgradeConfig.name;
-    upgradeConfig.descDisplay.innerText = upgradeConfig.description;
-    upgradeConfig.priceDisplay.innerText = upgradeConfig.price;
 }
 
 export function applyUpgrade(x, y, upgradeConfig, key) {

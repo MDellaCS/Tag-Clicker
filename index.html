@@ -13,11 +13,13 @@
 <body>
     <div class="game-container">
 
-
         <div id="melancia-container">
 
-            <p class="h2">Melancias</p>
-            <p class="h1" id="contador"></p>
+            <div class="center">
+                <p class="h2">Melancias</p>
+                <p class="h1" id="contador"></p>
+            </div>
+
             <img id="melancia" src="images/melancia.png">
 
         </div>
@@ -29,49 +31,7 @@
                 <p class="h1">UPGRADES</p>
             </div>
 
-            <div class="upgrade" id="upgrade1">
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="uppriceDisplay1"></span><br />
-                <img src="images/upgrades/teste.png">
-                <div class="tooltip">
-
-                    <span class="h1" id="upnameDisplay1"></span><br />
-                    <span class="h2" id="updescDisplay1"></span>
-
-                </div>
-            </div>
-
-            <div class="upgrade" id="upgrade2">
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="uppriceDisplay2"></span><br />
-                <img src="images/upgrades/teste2.png">
-                <div class="tooltip">
-
-                    <span class="h1" id="upnameDisplay2"></span><br />
-                    <span class="h2" id="updescDisplay2"></span>
-
-                </div>
-            </div>
-
-            <div class="upgrade" id="upgrade3">
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="uppriceDisplay3"></span><br />
-                <img src="images/upgrades/teste3.png">
-                <div class="tooltip">
-
-                    <span class="h1" id="upnameDisplay3"></span><br />
-                    <span class="h2" id="updescDisplay3"></span>
-
-                </div>
-            </div>
-
-            <div class="upgrade" id="upgrade4">
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="uppriceDisplay4"></span><br />
-                <img src="images/upgrades/teste4.png">
-                <div class="tooltip">
-
-                    <span class="h1" id="upnameDisplay4"></span><br />
-                    <span class="h2" id="updescDisplay4"></span>
-
-                </div>
-            </div>
+            <div id="upgrades"></div>
 
         </div>
 
@@ -82,13 +42,11 @@
                 <p class="h1">BUILDINGS</p>
             </div>
 
-            <div class="building" id="building1">
-                <span id="qtdDisplay1">0</span> | <span id="nameDisplay1"></span><br />
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="priceDisplay1"></span><br />
-                <span id="velDisplay1">0</span> mps
-            </div>
+            <div id="buildings"></div>
 
-            <div class="building" id="building2">
+           
+
+            <!-- <div class="building" id="building2">
                 <span id="qtdDisplay2">0</span> | <span id="nameDisplay2"></span><br />
                 <img id="melanciazinha" src="images/melanciazinha.png"><span id="priceDisplay2"></span><br />
                 <span id="velDisplay2">0</span> mps
@@ -104,18 +62,10 @@
                 <span id="qtdDisplay4">0</span> | <span id="nameDisplay4"></span><br />
                 <img id="melanciazinha" src="images/melanciazinha.png"><span id="priceDisplay4"></span><br />
                 <span id="velDisplay4">0</span> mps
-            </div>
+            </div> -->
 
         </div>
 
-    </div>
-
-    <div id="footer" class="h2 footer">
-        Developed by Matheus Della
-        <br>
-        <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img class="icon"
-                src="./images/linkedin.svg"></a>
-        <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon" src="./images/github.svg"></a>
     </div>
 
     <script type="module" src="JS/main.js"></script>
