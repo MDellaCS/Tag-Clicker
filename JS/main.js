@@ -3,6 +3,7 @@ import { createFloatingText } from './createFloatingText.js';
 
 import { loadUpgrades } from './upgrade.js';
 import { loadBuildings } from './building.js';
+import { modifyMelancias } from './modifyMelancias.js';
 
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
@@ -14,10 +15,8 @@ if (melancias === 0) {
 contador.innerText = melancias;
 
 melancia.addEventListener('click', (event) => {
-    melancias = parseInt(localStorage.getItem("melancias"));
     const clickValue = getClickValue();
-    contador.innerText = melancias += clickValue*1000;
-    localStorage.setItem("melancias", melancias);
+    modifyMelancias(clickValue, true);
 
     createFloatingText(event.clientX, event.clientY, "+" + clickValue, "green");
 });
@@ -39,3 +38,10 @@ observer.observe(contador, config);
 
 loadUpgrades();
 loadBuildings();
+
+//reset
+let reset = document.getElementById('reset');
+reset.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+});

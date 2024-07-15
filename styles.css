@@ -96,6 +96,7 @@ body {
     flex-wrap: wrap;
     border: solid 3px red;
     justify-content: center;
+    align-items: center;
 }
 
 .upgrade {
@@ -136,6 +137,16 @@ body {
     display: none;
 }
 
+#buildings {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+}
+
 .building {
     cursor: pointer;
     text-align: center;
@@ -143,8 +154,8 @@ body {
     padding: .2rem;
     display: inline-block;
     font-size: 2rem;
-    width: 60%;
-    margin: 1rem;
+    width: 90%;
+    margin: .3rem;
 
     border: 1rem solid #ffffff;
     border-image: url(images/text2.png) 405 600 repeat;

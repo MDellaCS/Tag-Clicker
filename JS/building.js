@@ -1,5 +1,6 @@
 import { createFloatingText } from './createFloatingText.js';
 import { buildingConfig } from './buildingConfig.js';
+import { modifyMelancias } from './modifyMelancias.js';
 
 let intervals = {};
 
@@ -42,15 +43,13 @@ export function applyBuilding(x, y, buildingConfig, key) {
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
     let price = parseInt(localStorage.getItem(`${buildingConfig.name}Price`)) || buildingConfig.initialPrice;
     let qtd = parseInt(localStorage.getItem(`${buildingConfig.name}Qtd`)) || 0;
-    let contador = document.getElementById('contador');
 
     let priceDisplay = document.getElementById("price" + key);
     let qtdDisplay = document.getElementById("qtd" + key);
     let velDisplay = document.getElementById("vel" + key);
 
     if (melancias >= price) {
-        localStorage.setItem("melancias", (melancias -= price));
-        contador.innerText = parseInt(localStorage.getItem("melancias"));
+        modifyMelancias(price, false);
 
         price = Math.ceil(price * buildingConfig.priceMultiplier);
         priceDisplay.innerText = price;
@@ -81,8 +80,6 @@ function startBuildingInterval(buildingConfig, qtd, velDisplay) {
     }
 
     intervals[buildingConfig.name] = setInterval(() => {
-        let melancias = parseInt(localStorage.getItem("melancias")) || 0;
-        localStorage.setItem("melancias", (melancias + qtd));
-        document.getElementById('contador').innerText = parseInt(localStorage.getItem("melancias"));
+        modifyMelancias(qtd, true);
     }, buildingConfig.productionRate);
 }

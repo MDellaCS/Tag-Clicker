@@ -1,30 +1,50 @@
 export const buildingConfig = {
     building1: {
-        name: "Horta de Melancias",
-        description: "Um pequeno jardim onde você cultiva melancias",
+        name: "Semente de Melancia",
         initialPrice: 10,
-        productionRate: 5000,
-        priceMultiplier: 1.05
+        priceMultiplier: 1.01,
+        productionRate: 10000
     },
     building2: {
-        name: "Fazenda de Melancias",
-        description: "Uma grande fazenda dedicada à produção de melancias",
-        initialPrice: 50,
-        productionRate: 3000,
-        priceMultiplier: 1.1
+        name: "Horta de Melancias",
+        initialPrice: 10,
+        priceMultiplier: 1.05,
+        productionRate: 5000
     },
     building3: {
-        name: "Melândia",
-        description: "Uma cidade inteira de melancias",
-        initialPrice: 550,
-        productionRate: 1000,
-        priceMultiplier: 1.15
+        name: "Fazenda de Melancias",
+        initialPrice: 50,
+        priceMultiplier: 1.1,
+        productionRate: 3000
     },
     building4: {
-        name: "Planeta das Melancias",
-        description: "Recentemente descoberto, um planeta inteiro de melancias!",
+        name: "Melândia",
+        initialPrice: 550,
+        priceMultiplier: 1.15,
+        productionRate: 1000
+    },
+    building5: {
+        name: "Planeta de Melancias",
         initialPrice: 10000,
-        productionRate: 100,
-        priceMultiplier: 1.2
+        priceMultiplier: 1.2,
+        productionRate: 100
+    },
+    building6: {
+        name: "A",
+        initialPrice: 1,
+        priceMultiplier: 1,
+        productionRate: 100
+    },
+    building7: {
+        name: "B",
+        initialPrice: 1,
+        priceMultiplier: 1,
+        productionRate: 100
+    },
+    building8: {
+        name: "C",
+        initialPrice: 1,
+        priceMultiplier: 1,
+        productionRate: 100
     }
 };
