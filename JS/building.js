@@ -17,11 +17,13 @@ export function loadBuildings() {
 
         const buildingElement = document.createElement('div');
         buildingElement.classList.add('building');
+        buildingElement.style.position = "relative";
         buildingElement.id = key;
 
         buildingElement.innerHTML = `
-                <span id="qtd${key}">${qtd}</span> | ${building.name}<br />
-                <img id="melanciazinha" src="images/melanciazinha.png"><span id="price${key}">${price}</span><br />
+                <img class="buildingIMG" src="images/buildings/${key}.png">
+                <span class="buildingQTD" id="qtd${key}">${qtd}</span>${building.name}<br />
+                <img id="melanciazinha" src="images/melancia.png"><span id="price${key}">${price}</span><br />
                 <span id="vel${key}">0</span> mps
         `;
 
