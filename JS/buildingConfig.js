@@ -1,8 +1,8 @@
 export const buildingConfig = {
     building1: {
         name: "Semente de Melancia",
-        initialPrice: 10,
-        priceMultiplier: 1.01,
+        initialPrice: 5,
+        priceMultiplier: 1.02,
         productionRate: 10000
     },
     building2: {
@@ -25,12 +25,12 @@ export const buildingConfig = {
     },
     building5: {
         name: "Planeta de Melancias",
-        initialPrice: 10000,
+        initialPrice: 4500,
         priceMultiplier: 1.2,
         productionRate: 100
     },
     building6: {
-        name: "A",
+        name: "Máquina de Clonagem",
         initialPrice: 1,
         priceMultiplier: 1,
         productionRate: 100
