@@ -4,7 +4,7 @@ export function modifyMelancias(melas, tipo) {
 
     if (tipo) {
         console.log("Ganhando " + melas + " melancias");
-        localStorage.setItem("melancias", (melancias + melas));
+        localStorage.setItem("melancias", (melancias + melas*1000));
     } else {
         console.log("Perdendo " + melas + " melancias");
         localStorage.setItem("melancias", (melancias - melas));

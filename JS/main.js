@@ -14,7 +14,23 @@ if (melancias === 0) {
 }
 contador.innerText = melancias;
 
+let currentSize = 1;
+let timeoutId;
+
 melancia.addEventListener('click', (event) => {
+
+    let rand = Math.random() * 20 - 10;
+
+    currentSize *= 1.02;
+    melancia.style.transform = `scale(${currentSize}) rotateZ(${rand}deg)`;
+
+
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+        melancia.style.transform = `scale(1) rotateZ(0deg)`;
+        currentSize = 1;
+    }, 333);
+
     const clickValue = getClickValue();
     modifyMelancias(clickValue, true);
 
