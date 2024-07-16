@@ -12,13 +12,13 @@
     }
 
     :root {
-        --main: #774936;
+        --main: linear-gradient(22deg, #197a2e, #9acaa6);
         --main2: linear-gradient(22deg, #774936, #653a2a);
         --main3: linear-gradient(22deg, #00b4d8, #00b4d8);
         --bg: #ffb2b2;
         --main-hover: linear-gradient(80deg, #642919, #b1634e);
-        --h1: #000000;
-        --h2: #333333;
+        --h1: #ffffff;
+        --h2: #b3b3b3;
         --lbl: #ffffff;
         --shadow: #00000022;
     }
@@ -40,22 +40,38 @@ body {
 }
 
 body {
-    background: var(--bg);
+    background-image: url(images/bg.png);
+    background-size: cover;
 }
 
 .center {
     width: 100%;
     text-align: center;
-    background-color: #ca9383;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
 }
 
 /* ---------------------------------------------------------------- MELANCIA */
+
+#melancia-container {
+    flex: 0 0 25%;
+    font-family: var(--fontTitle);
+    font-size: 2rem;
+    text-align: center;
+    border: 1rem solid #ffffff;
+    border-image: url(images/border1.png) 25% 25% 25% 25% / 0 1rem 0 0 repeat;
+}
 
 #melancia {
     cursor: pointer;
     width: 12rem;
     height: 12rem;
     margin: 2rem 0 2rem 0;
+    transition: all 0.2s ease-out;
 }
 
 #melancia:active {
@@ -69,32 +85,16 @@ body {
     padding: 0;
 }
 
-.game-container {
-    display: flex;
-    flex-direction: row;
-    height: 95vh;
-    border: 1rem solid red;
-}
-
-#melancia-container {
-    flex: 0 0 25%;
-    font-family: var(--fontTitle);
-    font-size: 2rem;
-    text-align: center;
-    border-right: .8rem solid #ffffff;
-}
-
 /* ---------------------------------------------------------------- UPGRADES */
 
 #upgrade-container {
-    flex: 0 0 40%;
+    flex: 0 0 45%;
 }
 
 #upgrades {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: solid 3px red;
     justify-content: center;
     align-items: center;
 }
@@ -106,10 +106,12 @@ body {
     padding: .2rem;
     display: inline-block;
     font-size: 2rem;
-    border: 1rem solid #ffffff;
-    border-image: url(images/text2.png) 405 600 repeat;
-    background: url(images/text3.png) center/cover no-repeat;
     margin: 1rem;
+
+    border: 1rem solid #ffffff;
+    border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat;
+
+    background: url(images/buildings/bg.png) no-repeat center/cover;
 }
 
 .upgrade img {
@@ -127,7 +129,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-left: .8rem solid #ffffff;
+    border: 1rem solid #ffffff;
+    border-image: url(images/border1.png) 25% 25% 25% 25% / 0 0 0 1rem repeat;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -142,45 +145,48 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color: green;
     justify-content: center;
     align-items: center;
 }
 
 .building {
     cursor: pointer;
-    text-align: center;
+    text-align: right;
     font-family: var(--fontText);
     padding: .2rem;
     display: inline-block;
-    font-size: 2rem;
-    width: 90%;
+    font-size: 1.5rem;
+    width: 80%;
     margin: .3rem;
 
     border: 1rem solid #ffffff;
-    border-image: url(images/text2.png) 405 600 repeat;
-    background: url(images/text3.png) center/cover no-repeat;
+    border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat;
+
+    background: url(images/buildings/bg.png) no-repeat center/cover;
+    padding-right: 2rem;
 }
 
 .building:active {
     filter: brightness(110%);
 }
 
-/* #building1 {
-    background-image: url(images/buildings/horta.png);
+.buildingIMG {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right: 8px solid white;
 }
 
-#building2 {
-    background-image: url(images/buildings/fazenda.png);
+.buildingQTD {
+    font-family: var(--fontTitle);
+    font-size: 3rem;
+    position: absolute;
+    left: 7rem;
+    top: 55%;
+    transform: translateY(-50%);
 }
-
-#building3 {
-    background-image: url(images/buildings/cidade.png);
-}
-
-#building4 {
-    background-image: url(images/buildings/planeta.png);
-} */
 
 /* ---------------------------------------------------------------- INPUT */
 
@@ -319,11 +325,11 @@ body {
 @keyframes shiver {
 
     0% {
-        transform: rotateZ(10deg);
+        transform: rotateZ(6deg);
     }
 
     50% {
-        transform: rotateZ(-10deg);
+        transform: rotateZ(-6deg);
     }
 
     100% {}
@@ -367,7 +373,9 @@ body {
 /* ---------------------------------------------------------------- TESTS */
 
 .floating-text {
-    position: absolute;
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
     pointer-events: none;
     max-width: 360px;
     font-family: var(--fontTitle);
@@ -380,10 +388,11 @@ body {
     visibility: hidden;
     position: absolute;
     z-index: 1;
-    background-color: #ff8c8c;
-    border: solid .2em #ff7b7b;
+    background-color: #006315;
+    border: solid .2em #00460f;
     width: 240px;
     padding: 1rem;
+    border-radius: 1em;
 }
 
 .upgrade:hover .tooltip {
