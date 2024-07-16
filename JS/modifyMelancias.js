@@ -1,13 +1,11 @@
-export function modifyMelancias(melas, tipo) {
+export function modifyMelancias(amount, type) {
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
 
-    if (tipo) {
-        console.log("Ganhando " + melas + " melancias");
-        localStorage.setItem("melancias", (melancias + melas*1000));
+    if (type) {
+        localStorage.setItem("melancias", (melancias + amount));
     } else {
-        console.log("Perdendo " + melas + " melancias");
-        localStorage.setItem("melancias", (melancias - melas));
+        localStorage.setItem("melancias", (melancias - amount));
     }
 
     document.getElementById('contador').innerText = parseInt(localStorage.getItem("melancias"));
