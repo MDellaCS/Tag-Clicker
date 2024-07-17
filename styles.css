@@ -12,13 +12,15 @@
     }
 
     :root {
-        --main: linear-gradient(22deg, #197a2e, #9acaa6);
-        --main2: linear-gradient(22deg, #774936, #653a2a);
+        --interior: #8b0000;
+        --exterior: #064900;
+        --albedo: ;
         --main3: linear-gradient(22deg, #00b4d8, #00b4d8);
         --bg: #005813;
         --main-hover: linear-gradient(80deg, #642919, #b1634e);
         --h1: #ffffff;
         --h2: #b3b3b3;
+        --h3: #9b9b9b;
         --lbl: #ffffff;
         --shadow: #00000022;
     }
@@ -42,6 +44,7 @@ body {
 body {
     background-image: url(images/bg.png);
     background-size: cover;
+    cursor: url(images/cursor.cur), auto;
 }
 
 .center {
@@ -67,7 +70,7 @@ body {
 }
 
 #melancia {
-    cursor: pointer;
+    cursor: url(images/pointer.cur), pointer;
     width: 12rem;
     height: 12rem;
     margin: 2rem 0 2rem 0;
@@ -81,7 +84,7 @@ body {
 #melanciazinha {
     width: 2rem;
     height: 2rem;
-    margin: 0 .7rem -.2rem 0;
+    margin: 0 .4rem -.4rem 0;
     padding: 0;
 }
 
@@ -99,13 +102,14 @@ body {
 }
 
 .upgrade {
-    cursor: pointer;
+    cursor: url(images/pointer.cur), pointer;
     text-align: center;
     font-family: var(--fontText);
-    padding: 1rem;
+    padding: .2rem;
     display: inline-block;
-    font-size: 2rem;
-    margin: 1rem;
+    font-size: 1.5rem;
+    margin: .3rem;
+    width: 20%;
 
     border: .5rem solid #005315;
     /* border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
@@ -114,11 +118,18 @@ body {
     background-color: #303030;
 }
 
-.upgrade img {
+.upgrade #upIMG {
     width: 4rem;
+    margin: .3rem 0 -.3rem 0;
+    animation: float 3s infinite ease-in;
+}
+
+.upgrade:hover #upIMG {
+    animation: shiver .7s infinite ease-in;
 }
 
 .upgrade:active {
+    z-index: 1;
     filter: brightness(110%);
 }
 
@@ -150,7 +161,7 @@ body {
 }
 
 .building {
-    cursor: pointer;
+    cursor: url(images/pointer.cur), pointer;
     text-align: right;
     font-family: var(--fontText);
     padding: .2rem;
@@ -214,10 +225,10 @@ body {
 /* ---------------------------------------------------------------- BUTTON */
 
 .btn {
-    border: solid 0.15em var(--main);
-    cursor: pointer;
-    color: var(--main);
-    background: var(--bg);
+    border: solid 0.15em var(--exterior);
+    cursor: url(images/pointer.cur), pointer;
+    color: white;
+    background: var(--exterior);
     font-family: var(--fontTitle);
     font-size: 1rem;
     font-weight: 500;
@@ -230,8 +241,8 @@ body {
 
 .btn:hover,
 .btn:active {
-    background: var(--main);
-    color: var(--bg);
+    background: var(--interior);
+    color: white;
 }
 
 /* ---------------------------------------------------------------- FONT */
@@ -252,6 +263,23 @@ body {
     text-align: center;
     color: var(--h2);
     margin: 1rem 0 0 0;
+}
+
+.h3 {
+    font-family: var(--fontText);
+    font-size: .8rem;
+    font-weight: 300;
+    text-align: justify;
+    color: var(--h3);
+    margin: 2rem 0 0 0;
+}
+
+.h3::before {
+    content: "\"";
+}
+
+.h3::after {
+    content: "\"";
 }
 
 .lbl {
@@ -300,8 +328,7 @@ body {
 }
 
 .press {
-    animation-name: press;
-    animation-duration: .1s;
+    animation: press .1s;
 }
 
 @keyframes floatOut {
@@ -320,20 +347,18 @@ body {
 
 @keyframes shiver {
 
-    0% {
+    0%,
+    100% {
         transform: rotateZ(6deg);
     }
 
     50% {
         transform: rotateZ(-6deg);
     }
-
-    100% {}
 }
 
 .shiver {
-    animation-name: shiver;
-    animation-duration: .2s;
+    animation: shiver .2s;
 }
 
 @keyframes slide {
@@ -349,8 +374,7 @@ body {
 }
 
 .slide {
-    animation-name: slide;
-    animation-duration: .7s;
+    animation: slide .7s;
 }
 
 @keyframes spin {
@@ -362,8 +386,23 @@ body {
 }
 
 .spin {
-    animation-name: spin;
-    animation-duration: .5s;
+    animation: spin .5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.float {
+    animation: float .5s infinite;
 }
 
 /* ---------------------------------------------------------------- TESTS */
@@ -390,6 +429,15 @@ body {
     width: 240px;
     padding: 1rem;
     border-radius: 1em;
+    pointer-events: none;
+}
+
+.tooltip .h1 {
+    margin: 0 0.5rem -.5rem 0.5rem;
+}
+
+.tooltip .h2 {
+    margin: 0 0 0 0;
 }
 
 .upgrade:hover .tooltip {
@@ -399,7 +447,7 @@ body {
 dialog {
     font-family: var(--fontText);
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 300;
     text-align: center;
     color: var(--h2);
 
@@ -407,8 +455,8 @@ dialog {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: red;
-    border: #00460f solid 3px;
+    background: var(--interior);
+    border: var(--exterior) solid 3px;
     border-radius: 1em;
-    padding: .3em;
+    padding: .5em;
 }
