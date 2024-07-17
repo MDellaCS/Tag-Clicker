@@ -5,7 +5,7 @@ export function createDialog() {
     dialog.innerHTML = `
         <dialog open>
             <form method="dialog">
-                Este site NÃO utiliza internet cookies, PORÉM, utiliza localStorage para salvar o progesso do jogo.
+                Este site não utiliza internet cookies, porém, utiliza localStorage (do Javascript) para salvar o progresso do jogo.
                 <button id="cookiesConsent" class="btn" type="submit">OK</button>
             </form>
         </dialog>

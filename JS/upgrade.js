@@ -18,10 +18,11 @@ export function loadUpgrades() {
 
             upgradeElement.innerHTML = `
                 <img id="melanciazinha" src="images/melanciazinha.png"><span>${upgrade.price}</span><br />
-                <img src="images/upgrades/${key}.png">
+                <img id="upIMG" src="images/upgrades/${key}.png">
                 <div class="tooltip">
                     <p class="h1">${upgrade.name}</p><br />
                     <p class="h2">${upgrade.description}</p>
+                    <p class="h3">${upgrade.text}</p>
                 </div>
             `;
 
