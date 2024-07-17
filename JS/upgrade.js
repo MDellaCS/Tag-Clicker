@@ -2,6 +2,7 @@ import { createFloatingText } from './createFloatingText.js';
 import { upgradeConfig } from './upgradeConfig.js';
 
 export function loadUpgrades() {
+
     const upgradesContainer = document.getElementById('upgrades');
     const upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
@@ -18,8 +19,8 @@ export function loadUpgrades() {
                 <img id="melanciazinha" src="images/melanciazinha.png"><span>${upgrade.price}</span><br />
                 <img src="images/upgrades/${key}.png">
                 <div class="tooltip">
-                    <span class="h1">${upgrade.name}</span><br />
-                    <span class="h2">${upgrade.description}</span>
+                    <p class="h1">${upgrade.name}</p><br />
+                    <p class="h2">${upgrade.description}</p>
                 </div>
             `;
 
@@ -33,7 +34,6 @@ export function loadUpgrades() {
 }
 
 export function applyUpgrade(x, y, upgradeConfig, key) {
-    console.log(`\n\nComprando ${upgradeConfig.name}\n`);
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
     let price = upgradeConfig.price;

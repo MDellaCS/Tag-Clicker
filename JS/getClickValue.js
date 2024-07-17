@@ -5,7 +5,7 @@ export function getClickValue() {
     let upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
     for (let key in upgradeConfig) {
-        if (upgradesPurchased[upgradeConfig[key].name]) {
+        if (upgradesPurchased[upgradeConfig[key].name] && upgradeConfig[key].type === "click") {
             clickValue += (upgradeConfig[key].effect) * upgradesPurchased[upgradeConfig[key].name];
         }
     }

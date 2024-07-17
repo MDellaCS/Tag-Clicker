@@ -71,7 +71,7 @@ body {
     width: 12rem;
     height: 12rem;
     margin: 2rem 0 2rem 0;
-    transition: all 0.2s ease-out;
+    transition: .1s ease-out;
 }
 
 #melancia:active {
@@ -103,19 +103,20 @@ body {
     cursor: pointer;
     text-align: center;
     font-family: var(--fontText);
-    padding: .2rem;
+    padding: 1rem;
     display: inline-block;
     font-size: 2rem;
     margin: 1rem;
 
-    border: 1rem solid #ffffff;
-    border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat;
+    border: .5rem solid #005315;
+    /* border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
 
-    background: url(images/buildings/bg.png) no-repeat center/cover;
+    /* background: url(images/buildings/bg.png) no-repeat center/cover; */
+    background-color: #303030;
 }
 
 .upgrade img {
-    width: 3rem;
+    width: 4rem;
 }
 
 .upgrade:active {
@@ -159,10 +160,11 @@ body {
     width: 80%;
     margin: .3rem;
 
-    border: 1rem solid #ffffff;
-    border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat;
+    border: .5rem solid #005315;
+    /* border-image: url(images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
 
-    background: url(images/buildings/bg.png) no-repeat center/cover;
+    /* background: url(images/buildings/bg.png) no-repeat center/cover; */
+    background-color: #9e0000;
     padding-right: 2rem;
 }
 
@@ -247,6 +249,7 @@ body {
     text-align: center;
     color: var(--h1);
     margin: 0 0.5rem 1rem 0.5rem;
+    background-color: purple;
 }
 
 .h2 {
@@ -256,6 +259,7 @@ body {
     text-align: center;
     color: var(--h2);
     margin: 1rem 0 0 0;
+    background-color: red;
 }
 
 .lbl {
@@ -382,6 +386,7 @@ body {
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
+    z-index: 2;
 }
 
 .tooltip {
