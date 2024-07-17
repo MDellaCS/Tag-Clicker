@@ -13,8 +13,6 @@ export function loadBuildings() {
         let price = parseInt(localStorage.getItem(`${building.name}Price`)) || building.initialPrice;
         let qtd = parseInt(localStorage.getItem(`${building.name}Qtd`)) || 0;
 
-        console.log(building);
-
         const buildingElement = document.createElement('div');
         buildingElement.classList.add('building');
         buildingElement.style.position = "relative";
@@ -63,7 +61,7 @@ export function applyBuilding(x, y, buildingConfig, key) {
         let vel = (1000 / (buildingConfig.productionRate / qtd)).toFixed(2);
         velDisplay.innerText = vel;
 
-        startBuildingInterval(buildingConfig, qtd, velDisplay);
+        startBuildingInterval(buildingConfig, qtd, velDisplay, x, y);
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + buildingConfig.name, "red");

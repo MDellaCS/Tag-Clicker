@@ -52,7 +52,7 @@ export const upgradeConfig = {
         name: "Melancias Quadradas",
         description: "+15% melancias de todas as fontes, para sempre",
         price: 80,
-        effect: .1,
+        effect: .15,
         type: "multiplier"
     }
 };

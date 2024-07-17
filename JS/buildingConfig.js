@@ -19,21 +19,21 @@ export const buildingConfig = {
     },
     building4: {
         name: "Melândia",
-        initialPrice: 550,
+        initialPrice: 250,
         priceMultiplier: 1.15,
         productionRate: 1000
     },
     building5: {
         name: "Planeta de Melancias",
-        initialPrice: 4500,
+        initialPrice: 1000,
         priceMultiplier: 1.2,
         productionRate: 100
     },
     building6: {
         name: "Máquina de Clonagem",
-        initialPrice: 1,
-        priceMultiplier: 1,
-        productionRate: 100
+        initialPrice: 1996,
+        priceMultiplier: 1.25,
+        productionRate: 10
     },
     building7: {
         name: "B",

@@ -1,4 +1,5 @@
 import { createFloatingText } from './createFloatingText.js';
+import { modifyMelancias } from './modifyMelancias.js';
 import { upgradeConfig } from './upgradeConfig.js';
 
 export function loadUpgrades() {
@@ -41,13 +42,10 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
     let upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
     if (melancias >= price) {
-        localStorage.setItem("melancias", (melancias -= price));
-        contador.innerText = parseInt(localStorage.getItem("melancias"));
+        modifyMelancias(price, false, x, y);
 
         upgradesPurchased[upgradeConfig.name] = (upgradesPurchased[upgradeConfig.name] || 0) + 1;
         localStorage.setItem("upgradesPurchased", JSON.stringify(upgradesPurchased));
-
-        createFloatingText(x, y, "Comprou " + upgradeConfig.name, "green");
 
         const upgradeElement = document.getElementById(key);
         if (upgradeElement) {

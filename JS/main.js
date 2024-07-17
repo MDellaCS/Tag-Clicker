@@ -1,9 +1,9 @@
 import { getClickValue } from './getClickValue.js';
-import { createFloatingText } from './createFloatingText.js';
 
 import { loadUpgrades } from './upgrade.js';
 import { loadBuildings } from './building.js';
 import { modifyMelancias } from './modifyMelancias.js';
+import { createDialog } from './createDialog.js';
 
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
@@ -29,12 +29,10 @@ melancia.addEventListener('click', (event) => {
     timeoutId = setTimeout(() => {
         melancia.style.transform = `scale(1) rotateZ(0deg)`;
         currentSize = 1;
-    }, 333);
+    }, 500);
 
     const clickValue = getClickValue();
-    modifyMelancias(clickValue, true);
-
-    createFloatingText(event.clientX, event.clientY, "+" + clickValue, "green");
+    modifyMelancias(clickValue, true, event.clientX, event.clientY);
 });
 
 const observer = new MutationObserver((mutationsList) => {
@@ -52,6 +50,11 @@ const config = { subtree: true, characterData: true, childList: true };
 
 observer.observe(contador, config);
 
+let showModal = localStorage.getItem("showModal") || true;
+if (showModal == true) {
+    createDialog();
+}
+
 loadUpgrades();
 loadBuildings();
 
@@ -60,4 +63,10 @@ let reset = document.getElementById('reset');
 reset.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
+});
+
+//give100k
+let give100k = document.getElementById('give100k');
+give100k.addEventListener('click', (event) => {
+    modifyMelancias(100000, true, event.clientX, event.clientY);
 });
