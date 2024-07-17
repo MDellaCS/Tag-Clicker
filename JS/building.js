@@ -1,6 +1,7 @@
 import { createFloatingText } from './createFloatingText.js';
 import { buildingConfig } from './buildingConfig.js';
 import { modifyMelancias } from './modifyMelancias.js';
+import { setBuildingProduction } from './buildingInterval.js';
 
 let intervals = {};
 
@@ -31,16 +32,15 @@ export function loadBuildings() {
             applyBuilding(event.clientX, event.clientY, building, key);
         });
 
-        let velDisplay = document.getElementById("vel" + key);
         if (qtd > 0) {
-            startBuildingInterval(building, qtd, velDisplay);
+            updateBuildingProduction(building, qtd, key);
         }
     }
 }
 
 export function applyBuilding(x, y, buildingConfig, key) {
 
-    let melancias = parseInt(localStorage.getItem("melancias")) || 0;
+    let melancias = parseFloat(localStorage.getItem("melancias")) || 0;
     let price = parseInt(localStorage.getItem(`${buildingConfig.name}Price`)) || buildingConfig.initialPrice;
     let qtd = parseInt(localStorage.getItem(`${buildingConfig.name}Qtd`)) || 0;
 
@@ -58,28 +58,23 @@ export function applyBuilding(x, y, buildingConfig, key) {
         qtdDisplay.innerText = ++qtd;
         localStorage.setItem(`${buildingConfig.name}Qtd`, qtd);
 
-        let vel = (1000 / (buildingConfig.productionRate / qtd)).toFixed(2);
+        let vel = (buildingConfig.productionRate * qtd).toFixed(2);
         velDisplay.innerText = vel;
 
-        startBuildingInterval(buildingConfig, qtd, velDisplay, x, y);
+        updateBuildingProduction(buildingConfig, qtd);
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + buildingConfig.name, "red");
     }
 }
 
-function startBuildingInterval(buildingConfig, qtd, velDisplay) {
+function updateBuildingProduction(buildingConfig, qtd, key) {
+    let productionRate = buildingConfig.productionRate * qtd;
+    setBuildingProduction(buildingConfig.name, productionRate);
 
+    let velDisplay = document.getElementById("vel" + key);
+    let vel = (buildingConfig.productionRate * qtd).toFixed(2);
     if (velDisplay) {
-        let vel = (1000 / (buildingConfig.productionRate / qtd)).toFixed(2);
         velDisplay.innerText = vel;
     }
-
-    if (intervals[buildingConfig.name]) {
-        clearInterval(intervals[buildingConfig.name]);
-    }
-
-    intervals[buildingConfig.name] = setInterval(() => {
-        modifyMelancias(qtd, true);
-    }, buildingConfig.productionRate);
 }

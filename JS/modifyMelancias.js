@@ -3,7 +3,7 @@ import { createFloatingText } from './createFloatingText.js';
 
 export function modifyMelancias(amount, type, x, y) {
 
-    let melancias = parseInt(localStorage.getItem("melancias")) || 0;
+    let melancias = parseFloat(localStorage.getItem("melancias")) || 0;
     let upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
     let multiplier = 1;
@@ -15,9 +15,9 @@ export function modifyMelancias(amount, type, x, y) {
         }
     }
 
-    let addAmount = Math.floor(amount * multiplier);
+    let addAmount = amount * multiplier;
 
-    createFloatingText(x, y, "+" + amount, "green");
+    createFloatingText(500, 500 , "+" + amount, "green");
 
     if (type) {
         localStorage.setItem("melancias", (melancias + addAmount));

@@ -8,7 +8,7 @@ import { createDialog } from './createDialog.js';
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
 
-let melancias = parseInt(localStorage.getItem("melancias")) || 0;
+let melancias = parseFloat(localStorage.getItem("melancias")) || 0;
 if (melancias === 0) {
     localStorage.setItem("melancias", 0);
 }
@@ -35,21 +35,6 @@ melancia.addEventListener('click', (event) => {
     modifyMelancias(clickValue, true, event.clientX, event.clientY);
 });
 
-const observer = new MutationObserver((mutationsList) => {
-    for (let mutation of mutationsList) {
-        if (mutation.type === 'childList' || mutation.type === 'characterData') {
-            contador.classList.add("shiver");
-            setTimeout(() => {
-                contador.classList.remove("shiver");
-            }, 200);
-        }
-    }
-});
-
-const config = { subtree: true, characterData: true, childList: true };
-
-observer.observe(contador, config);
-
 let showModal = localStorage.getItem("showModal") || true;
 if (showModal == true) {
     createDialog();
@@ -61,6 +46,8 @@ loadBuildings();
 //reset
 let reset = document.getElementById('reset');
 reset.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
     localStorage.clear();
     location.reload();
 });
