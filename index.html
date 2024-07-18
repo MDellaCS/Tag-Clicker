@@ -11,8 +11,6 @@
 </head>
 
 <body>
-    <button id="reset" style="position: fixed;">Reset</button>
-    <button id="give100k" style="position: fixed; left: 3rem;">Give 100.000</button>
     <div class="game-container">
 
         <div id="melancia-container">
@@ -23,6 +21,44 @@
             </div>
 
             <img id="melancia" src="images/melancia.png">
+
+            <div class="extras">
+
+                <div class="tabs">
+                    <button class="tablink" id="Tab1">Info</button>
+                    <button class="tablink" id="Tab2">Opções</button>
+                    <button class="tablink" id="Tab3">Trapaças</button>
+                </div>
+
+                <div id="cTab1" class="tabcontent">
+                    <p class="h1">Sobre Melanclica</p>
+                    <p class="h3">Meu objetivo com esse projeto é aprender JavaScript utilizando módulos e funções mais
+                        complexas comparadas com JS com um backend externo (APIs RESTful, por exemplo), além de
+                        aperfeiçoar meu design com CSS e desenhos básicos. É (super) inspirado em outro jogo de
+                        <i>browser</i>, chamado Cookie Clicker, que por sua vez, é semelhante a outros <i>idle games</i>
+                        como Adventure Capitalist e Clicker Heroes.
+                    </p>
+                    <p class="h2">
+                        Desenvolvido por Matheus Della
+                    </p>
+                    <a target="_blank" href="https://www.linkedin.com/in/matheus-della-crocce-santos-86ab60232/"><img
+                            class="icon" src="./images/linkedin.svg"></a>
+                    <a target="_blank" href="https://github.com/MDellaCS/"><img class="icon"
+                            src="./images/github.svg"></a>
+                </div>
+
+                <div id="cTab2" class="tabcontent">
+                    <button id="reset">Reset</button>
+                </div>
+
+                <div id="cTab3" class="tabcontent">
+                    <button id="give100k">+100.000 Melancias</button>
+                    <button id="giveAllUpgrades">Receba Todos os Upgrades</button>
+                    <button id="giveAllBuildings">Tenha 100 de Todas as Buildings</button>
+                </div>
+
+
+            </div>
 
         </div>
 
