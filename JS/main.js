@@ -1,5 +1,5 @@
 import { getClickValue } from './getClickValue.js';
-
+import { loadCheats } from './cheats.js';
 import { loadUpgrades } from './upgrade.js';
 import { loadBuildings } from './building.js';
 import { modifyMelancias } from './modifyMelancias.js';
@@ -52,8 +52,37 @@ reset.addEventListener('click', () => {
     location.reload();
 });
 
-//give100k
-let give100k = document.getElementById('give100k');
-give100k.addEventListener('click', (event) => {
-    modifyMelancias(100000, true, event.clientX, event.clientY);
-});
+loadCheats();
+
+var tablinks = document.getElementsByClassName("tablink");
+for (let tablink of tablinks) {
+    tablink.addEventListener("click", function () {
+        openTab(tablink.id);
+    });
+}
+
+// By default, open the first tab
+openTab("Tab1");
+
+function openTab(tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById("c" + tabName).style.display = "block";
+    document.getElementById("c" + tabName).classList.add("active");
+    document.getElementById(tabName).classList.add("active");
+}

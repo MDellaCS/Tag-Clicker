@@ -19,6 +19,7 @@ export function loadUpgrades() {
             upgradeElement.innerHTML = `
                 <img id="melanciazinha" src="images/melanciazinha.png"><span>${upgrade.price}</span><br />
                 <img id="upIMG" src="images/upgrades/${key}.png">
+
                 <div class="tooltip">
                     <p class="h1">${upgrade.name}</p><br />
                     <p class="h2">${upgrade.description}</p>
@@ -50,7 +51,10 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
 
         const upgradeElement = document.getElementById(key);
         if (upgradeElement) {
-            upgradeElement.remove();
+            upgradeElement.classList.add("flush");
+            setTimeout(() => {
+                upgradeElement.remove();
+            }, 500);
         }
 
     } else {

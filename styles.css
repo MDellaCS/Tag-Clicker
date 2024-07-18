@@ -65,15 +65,17 @@ body {
     font-family: var(--fontTitle);
     font-size: 2rem;
     text-align: center;
-    border: 1rem solid #ffffff;
-    border-image: url(images/border1.png) 25% 25% 25% 25% / 0 1rem 0 0 repeat;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+    /* border-image: url(images/border1.png) 25% 25% 25% 25% / 0 1rem 0 0 repeat; */
+
+    background-color: #003500;
 }
 
 #melancia {
     cursor: url(images/pointer.cur), pointer;
     width: 12rem;
     height: 12rem;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0 6rem 0;
     transition: .1s ease-out;
 }
 
@@ -129,7 +131,7 @@ body {
 }
 
 .upgrade:active {
-    z-index: 1;
+    z-index: 2;
     filter: brightness(110%);
 }
 
@@ -140,11 +142,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 1rem solid #ffffff;
-    border-image: url(images/border1.png) 25% 25% 25% 25% / 0 0 0 1rem repeat;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+    /* border-image: url(images/border1.png) 25% 25% 25% 25% / 0 0 0 1rem repeat; */
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+
+    background-color: #003500;
 }
 
 .building-container::-webkit-scrollbar {
@@ -270,6 +274,7 @@ body {
     font-size: .8rem;
     font-weight: 300;
     text-align: justify;
+    line-height: 1.3rem;
     color: var(--h3);
     margin: 2rem 0 0 0;
 }
@@ -303,15 +308,42 @@ body {
 }
 
 .icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin: 0.6rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    filter: invert(100%);
 }
 
 :disabled,
 :disabled:hover {
     opacity: 0.3;
     cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------- TOOLTIP */
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    background-color: #006315;
+    border: solid .2em #00460f;
+    width: 240px;
+    padding: 1rem;
+    border-radius: 1em;
+    pointer-events: none;
+}
+
+.tooltip .h1 {
+    margin: 0 0.5rem -.5rem 0.5rem;
+}
+
+.tooltip .h2 {
+    margin: 0 0 0 0;
+}
+
+.upgrade:hover .tooltip {
+    visibility: visible;
 }
 
 /* ---------------------------------------------------------------- ANIMATION */
@@ -405,6 +437,24 @@ body {
     animation: float .5s infinite;
 }
 
+@keyframes flush {
+
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+.flush {
+    pointer-events: none;
+    animation: flush .5s forwards
+}
+
 /* ---------------------------------------------------------------- TESTS */
 
 .floating-text {
@@ -418,30 +468,6 @@ body {
     font-weight: 500;
     text-align: center;
     z-index: 2;
-}
-
-.tooltip {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    background-color: #006315;
-    border: solid .2em #00460f;
-    width: 240px;
-    padding: 1rem;
-    border-radius: 1em;
-    pointer-events: none;
-}
-
-.tooltip .h1 {
-    margin: 0 0.5rem -.5rem 0.5rem;
-}
-
-.tooltip .h2 {
-    margin: 0 0 0 0;
-}
-
-.upgrade:hover .tooltip {
-    visibility: visible;
 }
 
 dialog {
@@ -459,4 +485,40 @@ dialog {
     border: var(--exterior) solid 3px;
     border-radius: 1em;
     padding: .5em;
+}
+
+.tabs {
+    display: flex;
+    background-color: #ff6f6f;
+    border-bottom: 1px solid #ccc;
+}
+
+.tablink {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: background-color 0.3s;
+    font-size: 17px;
+}
+
+.tablink:hover {
+    background-color: #ddd;
+}
+
+.tablink.active {
+    background-color: #ccc;
+    border-bottom: 2px solid #555;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent.active {
+    display: block;
 }
