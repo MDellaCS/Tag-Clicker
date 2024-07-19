@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
 
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <title>Melanclica</title>
@@ -13,7 +13,7 @@
 <body>
     <div class="game-container">
 
-        <div id="melancia-container">
+        <div class="enterLeft" id="melancia-container">
 
             <div class="center">
                 <p class="h2">Melancias</p>
@@ -25,9 +25,9 @@
             <div class="extras">
 
                 <div class="tabs">
-                    <button class="tablink" id="Tab1">Info</button>
-                    <button class="tablink" id="Tab2">Opções</button>
-                    <button class="tablink" id="Tab3">Trapaças</button>
+                    <button class="tablink h2" id="Tab1">Info</button>
+                    <button class="tablink h2" id="Tab2">Opções</button>
+                    <button class="tablink h2" id="Tab3">Trapaças</button>
                 </div>
 
                 <div id="cTab1" class="tabcontent">
@@ -48,13 +48,13 @@
                 </div>
 
                 <div id="cTab2" class="tabcontent">
-                    <button id="reset">Reset</button>
+                    <button class="btn" id="reset">Reset</button>
                 </div>
 
                 <div id="cTab3" class="tabcontent">
-                    <button id="give100k">+100.000 Melancias</button>
-                    <button id="giveAllUpgrades">Receba Todos os Upgrades</button>
-                    <button id="giveAllBuildings">Tenha 100 de Todas as Buildings</button>
+                    <button class="btn" id="give100k">+100.000 Melancias</button>
+                    <button class="btn" id="giveAllUpgrades">Receba Todos os Upgrades</button>
+                    <button class="btn" id="giveAllBuildings">Tenha 100 de Todas as Buildings</button>
                 </div>
 
 
@@ -73,7 +73,7 @@
 
         </div>
 
-        <div id="building-container">
+        <div class="enterRight" id="building-container">
 
             <div class="center">
                 <p class="h2">Construções</p>
@@ -86,5 +86,5 @@
 
     </div>
 
-    <script type="module" src="JS/main.js"></script>
+    <script type="module" src="scritps/main.js"></script>
 </body>
