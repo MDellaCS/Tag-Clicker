@@ -1,0 +1,42 @@
+#upgrade-container {
+    flex: 0 0 45%;
+}
+
+#upgrades {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.upgrade {
+    cursor: url(../images/pointer.cur), pointer;
+    text-align: center;
+    font-family: var(--fontText);
+    padding: .2rem;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: .3rem;
+    width: 20%;
+
+    border: .5rem solid #005315;
+    /* border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
+
+    /* background: url(../images/buildings/bg.png) no-repeat center/cover; */
+    background-color: #303030;
+}
+
+.upgrade #upIMG {
+    width: 4rem;
+    margin: .3rem 0 -.3rem 0;
+    animation: float 3s infinite ease-in;
+}
+
+.upgrade:hover #upIMG {
+    animation: shiver .7s infinite ease-in;
+}
+
+.upgrade:active {
+    z-index: 2;
+    filter: brightness(110%);
+}

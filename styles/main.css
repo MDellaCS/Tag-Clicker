@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('animation.css');
+@import url('building.css');
+@import url('button.css');
+@import url('font.css');
+@import url('melancia.css');
+@import url('tab.css');
+@import url('tooltip.css');
+@import url('upgrade.css');
+
+@import url('tests\ \(DELETE\ LATER\).css');
+
+:root {
+    --fontTitle: "Roboto Slab";
+    --fontText: "Roboto";
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+
+    :root {
+        --interior: #8b0000;
+        --exterior: #064900;
+        --exterior-hover: #086300;
+        --albedo: ;
+        --main3: linear-gradient(22deg, #00b4d8, #00b4d8);
+        --bg: #005813;
+        --main-hover: linear-gradient(80deg, #642919, #b1634e);
+        --h1: #ffffff;
+        --h2: #b3b3b3;
+        --h3: #a0a0a0;
+        --lbl: #ffffff;
+        --shadow: #00000022;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+body {
+    background-image: url(../../images/bg.png);
+    background-size: cover;
+    cursor: url(../images/cursor.cur), auto;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* ---------------------------------------------------------------- INPUT */
+
+.formInput {
+    border: 2px solid var(--shadow);
+    border-radius: 0.5rem;
+    font-family: var(--fontText);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--lbl);
+    width: 80%;
+    margin: 0.5rem 0 2rem 0;
+    padding: .5rem 0 .5rem 0;
+    background: var(--shadow);
+    transition: .1s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formInput:hover,
+.formInput:focus {
+    background-color: var(--shadow);
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    filter: invert(100%);
+}
+
+:disabled,
+:disabled:hover {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
