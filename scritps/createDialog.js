@@ -1,6 +1,5 @@
 export function createDialog() {
     const dialog = document.createElement('div');
-    dialog.classList.add("slide");
 
     dialog.innerHTML = `
         <dialog open>

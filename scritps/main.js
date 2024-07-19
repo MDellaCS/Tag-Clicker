@@ -4,6 +4,7 @@ import { loadUpgrades } from './upgrade.js';
 import { loadBuildings } from './building.js';
 import { modifyMelancias } from './modifyMelancias.js';
 import { createDialog } from './createDialog.js';
+import { createFloatingText } from './createFloatingText.js';
 
 let melancia = document.getElementById('melancia');
 let contador = document.getElementById('contador');
@@ -32,7 +33,7 @@ melancia.addEventListener('click', (event) => {
     }, 500);
 
     const clickValue = getClickValue();
-    modifyMelancias(clickValue, true, event.clientX, event.clientY);
+    createFloatingText(event.clientX, event.clientY, "+" + modifyMelancias(clickValue, true), "green");
 });
 
 let showModal = localStorage.getItem("showModal") || true;

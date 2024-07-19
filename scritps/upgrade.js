@@ -13,7 +13,7 @@ export function loadUpgrades() {
         if (!upgradesPurchased[upgrade.name]) {
 
             const upgradeElement = document.createElement('div');
-            upgradeElement.classList.add('upgrade');
+            upgradeElement.classList.add('upgrade',  'appear');
             upgradeElement.id = key;
 
             upgradeElement.innerHTML = `
@@ -51,6 +51,7 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
 
         const upgradeElement = document.getElementById(key);
         if (upgradeElement) {
+            upgradeElement.classList.remove("appear");
             upgradeElement.classList.add("flush");
             setTimeout(() => {
                 upgradeElement.remove();
@@ -60,8 +61,4 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + upgradeConfig.name, "red");
     }
-}
-
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }

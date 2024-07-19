@@ -43,22 +43,6 @@
     animation: shiver .2s;
 }
 
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.slide {
-    animation: slide .7s 2s;
-}
-
 @keyframes spin {
     0% {
         transform: rotateX(190deg);
@@ -102,7 +86,7 @@
 
 .flush {
     pointer-events: none;
-    animation: flush .5s forwards
+    animation: flush .5s forwards;
 }
 
 @keyframes enterLeft {
@@ -129,4 +113,18 @@
 
 .enterRight {
     animation: enterRight 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes appear {
+
+    0% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    100% {}
+}
+
+.appear {
+    animation: appear .5s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }

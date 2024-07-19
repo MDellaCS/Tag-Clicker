@@ -12,7 +12,6 @@
 }
 
 dialog {
-    opacity: 0;
     font-family: var(--fontText);
     font-size: 1rem;
     font-weight: 300;
