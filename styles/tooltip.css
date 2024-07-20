@@ -18,6 +18,7 @@
     margin: 0 0 0 0;
 }
 
-.upgrade:hover .tooltip {
+.upgrade:hover .tooltip,
+.boughtUpgrade:hover .tooltip {
     visibility: visible;
 }

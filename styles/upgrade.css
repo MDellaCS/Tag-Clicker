@@ -1,5 +1,6 @@
 #upgrade-container {
     flex: 0 0 45%;
+    position: relative;
 }
 
 #upgrades {
@@ -39,4 +40,41 @@
 .upgrade:active {
     z-index: 2;
     filter: brightness(110%);
+}
+
+#boughtUpgrades {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    justify-content: flex-start;
+    margin: auto;
+    width: 70%;
+    bottom: 10%;
+    margin: 2rem;
+}
+
+.boughtUpgrade {
+    background-color: pink;
+
+    cursor: url(../images/pointer.cur), pointer;
+    text-align: center;
+    font-family: var(--fontText);
+    padding: .1rem;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: .3rem;
+    width: 2rem;
+    height: 2rem;
+
+
+    border: .2rem solid #005315;
+    /* border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
+
+    /* background: url(../images/buildings/bg.png) no-repeat center/cover; */
+    background-color: #303030;
+}
+
+.boughtUpgrade #upIMG {
+    width: 2rem;
 }

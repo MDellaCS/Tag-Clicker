@@ -1,6 +1,7 @@
 import { createFloatingText } from './createFloatingText.js';
 import { modifyMelancias } from './modifyMelancias.js';
 import { upgradeConfig } from './upgradeConfig.js';
+import { formatNumber } from './formatNumber.js';
 
 export function loadUpgrades() {
 
@@ -13,11 +14,11 @@ export function loadUpgrades() {
         if (!upgradesPurchased[upgrade.name]) {
 
             const upgradeElement = document.createElement('div');
-            upgradeElement.classList.add('upgrade',  'appear');
+            upgradeElement.classList.add('upgrade', 'appear');
             upgradeElement.id = key;
 
             upgradeElement.innerHTML = `
-                <img id="melanciazinha" src="images/melanciazinha.png"><span>${upgrade.price}</span><br />
+                <img id="melanciazinha" src="images/melanciazinha.png"><span>${formatNumber(upgrade.price)}</span><br />
                 <img id="upIMG" src="images/upgrades/${key}.png">
 
                 <div class="tooltip">
@@ -32,6 +33,8 @@ export function loadUpgrades() {
             document.getElementById(key).addEventListener('click', (event) => {
                 applyUpgrade(event.clientX, event.clientY, upgrade, key);
             });
+        } else {
+            loadBoughtUpgrades(key);
         }
     }
 }
@@ -40,7 +43,6 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
 
     let melancias = parseInt(localStorage.getItem("melancias")) || 0;
     let price = upgradeConfig.price;
-    let contador = document.getElementById('contador');
     let upgradesPurchased = JSON.parse(localStorage.getItem("upgradesPurchased")) || {};
 
     if (melancias >= price) {
@@ -48,6 +50,8 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
 
         upgradesPurchased[upgradeConfig.name] = (upgradesPurchased[upgradeConfig.name] || 0) + 1;
         localStorage.setItem("upgradesPurchased", JSON.stringify(upgradesPurchased));
+
+        loadBoughtUpgrades(key);
 
         const upgradeElement = document.getElementById(key);
         if (upgradeElement) {
@@ -60,5 +64,36 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + upgradeConfig.name, "red");
+    }
+}
+
+function loadBoughtUpgrades(key) {
+
+    const upgradesContainer = document.getElementById('boughtUpgrades');
+
+    const upgrade = upgradeConfig[key];
+
+    const upgradeElement = document.createElement('div');
+    upgradeElement.classList.add('boughtUpgrade', 'appear');
+    upgradeElement.id = key;
+
+    upgradeElement.innerHTML = `
+                <img id="upIMG" src="images/upgrades/${key}.png">
+
+                <div class="tooltip">
+                    <p class="h1">${upgrade.name}</p><br />
+                    <p class="h2">${upgrade.description}</p>
+                    <p class="h3">${upgrade.text}</p>
+                </div>
+            `;
+
+    upgradesContainer.appendChild(upgradeElement);
+
+    if (!document.getElementById('boughtUpgradesTitle')) {
+        const titleElement = document.createElement('div');
+        titleElement.id = 'boughtUpgradesTitle';
+        titleElement.classList.add('h2', 'appear');
+        titleElement.innerText = 'Adquiridos:';
+        upgradesContainer.prepend(titleElement);
     }
 }
