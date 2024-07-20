@@ -13,9 +13,9 @@ function updateTotalProductionRate() {
 function startBuildingsInterval() {
     setInterval(() => {
         if (totalProductionRate > 0) {
-            modifyMelancias((totalProductionRate / 10), true);
+            modifyMelancias((totalProductionRate / 100), true);
         }
-    }, 100);
+    }, 10);
 }
 
 // Função para configurar a produção de uma construção

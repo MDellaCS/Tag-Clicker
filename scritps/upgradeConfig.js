@@ -3,7 +3,7 @@ export const upgradeConfig = {
         name: "Super Clique",
         description: "+1 melancia por clique",
         text: "Melhora sua geração de melancia por cliques",
-        price: 25,
+        price: 75,
         effect: 1,
         type: "click"
     },
@@ -11,7 +11,7 @@ export const upgradeConfig = {
         name: "Hiper Clique",
         description: "+2 melancias por clique",
         text: "+4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4, +4...",
-        price: 75,
+        price: 150,
         effect: 2,
         type: "click"
     },
@@ -19,7 +19,7 @@ export const upgradeConfig = {
         name: "Fertilizante",
         description: "+5% melancias de todas as fontes, para sempre",
         text: "Também conhecido como: adubo",
-        price: 75,
+        price: 400,
         effect: .05,
         type: "multiplier"
     },
@@ -27,7 +27,7 @@ export const upgradeConfig = {
         name: "Sementes Especiais",
         description: "+10% melancias de todas as fontes, para sempre",
         text: "Essas sementes germinam 10% mais rápido que sementes comuns",
-        price: 100,
+        price: 400,
         effect: .1,
         type: "multiplier"
     },
@@ -35,7 +35,7 @@ export const upgradeConfig = {
         name: "Mega Clique",
         description: "+3 melancias por clique",
         text: "Um mega clique para uma mega melancia",
-        price: 250,
+        price: 1000,
         effect: 3,
         type: "click"
     },
@@ -43,7 +43,7 @@ export const upgradeConfig = {
         name: "Melancias Quadradas",
         description: "+15% melancias de todas as fontes, para sempre",
         text: "Essas melancias me lembram algum jogo... Não sei exatamente qual.",
-        price: 333,
+        price: 1200,
         effect: .15,
         type: "multiplier"
     },
@@ -51,7 +51,7 @@ export const upgradeConfig = {
         name: "Solo Hidratado",
         description: "+10% melancias de todas as fontes, para sempre",
         text: "Esse novo sistema de irrigação é incrível!",
-        price: 500,
+        price: 2000,
         effect: .1,
         type: "multiplier"
     },
@@ -59,7 +59,7 @@ export const upgradeConfig = {
         name: "Blaster Clique",
         description: "+4 melancias por clique",
         text: "Duper Clique em breve...",
-        price: 1000,
+        price: 3750,
         effect: 4,
         type: "click"
     }
