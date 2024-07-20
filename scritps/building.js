@@ -2,6 +2,7 @@ import { createFloatingText } from './createFloatingText.js';
 import { buildingConfig } from './buildingConfig.js';
 import { modifyMelancias } from './modifyMelancias.js';
 import { setBuildingProduction } from './buildingInterval.js';
+import { formatNumber } from './formatNumber.js';
 
 let intervals = {};
 
@@ -23,7 +24,7 @@ export async function loadBuildings() {
         buildingElement.innerHTML = `
                 <img class="buildingIMG" src="images/buildings/${key}.png">
                 <span class="buildingQTD" id="qtd${key}">${qtd}</span>${building.name}<br />
-                <img id="melanciazinha" src="images/melancia.png"><span id="price${key}">${price}</span><br />
+                <img id="melanciazinha" src="images/melancia.png"><span id="price${key}">${formatNumber(price)}</span><br />
                 <span id="vel${key}">0</span> mps
         `;
 
@@ -53,7 +54,7 @@ export function applyBuilding(x, y, buildingConfig, key) {
         modifyMelancias(price, false);
 
         price = Math.ceil(price * buildingConfig.priceMultiplier);
-        priceDisplay.innerText = price;
+        priceDisplay.innerText = formatNumber(price);
         localStorage.setItem(`${buildingConfig.name}Price`, price);
 
         qtdDisplay.innerText = ++qtd;

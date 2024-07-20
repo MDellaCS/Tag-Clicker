@@ -1,4 +1,5 @@
 import { upgradeConfig } from './upgradeConfig.js';
+import { formatNumber } from './formatNumber.js';
 
 export function modifyMelancias(amount, type) {
 
@@ -18,10 +19,11 @@ export function modifyMelancias(amount, type) {
 
     if (type) {
         localStorage.setItem("melancias", (melancias + addAmount));
-        document.getElementById('contador').innerText = parseInt(localStorage.getItem("melancias"));
+        document.getElementById('contador').innerText = formatNumber(parseInt(localStorage.getItem("melancias")));
         return addAmount.toFixed(0);
     } else {
         localStorage.setItem("melancias", (melancias - amount));
-        document.getElementById('contador').innerText = parseInt(localStorage.getItem("melancias"));
+        document.getElementById('contador').innerText = formatNumber(parseInt(localStorage.getItem("melancias")));
     }
 }
+
