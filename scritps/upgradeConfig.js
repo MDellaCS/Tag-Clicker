@@ -118,27 +118,27 @@ export const upgradeConfig = {
         targetBuilding: "Planeta de Melancias"
     },
     upgrade15: {
-        name: "",
+        name: "Políticas Éticas",
         description: "Máquina de Clonagem produz o dobro de melancias",
-        text: "",
+        text: "Um documento que estabelece diretrizes a serem seguidas em relação à clonagem de melancias",
         price: 11000,
         effect: 2,
         type: "buildingboost",
         targetBuilding: "Máquina de Clonagem"
     },
     upgrade16: {
-        name: "",
+        name: "Resolver Fibonacci",
         description: "Melancia Recursiva produz o dobro de melancias",
-        text: "",
+        text: "Suas melancias recursivas podem calcular o n-ésimo número na sequência de Fibonacci",
         price: 12000,
         effect: 2,
         type: "buildingboost",
         targetBuilding: "Melancia Recursiva"
     },
     upgrade17: {
-        name: "",
+        name: "Cinto de Segurança",
         description: "Portal Multidimensional produz o dobro de melancias",
-        text: "",
+        text: "Apertem os cintos!",
         price: 13000,
         effect: 2,
         type: "buildingboost",
