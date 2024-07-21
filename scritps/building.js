@@ -17,7 +17,7 @@ export async function loadBuildings() {
         let qtd = parseInt(localStorage.getItem(`${building.name}Qtd`)) || 0;
 
         const buildingElement = document.createElement('div');
-        buildingElement.classList.add('building', 'enterRight');
+        buildingElement.classList.add('building', 'enterRight',  'disabled');
         buildingElement.style.position = "relative";
         buildingElement.id = key;
 
@@ -38,6 +38,7 @@ export async function loadBuildings() {
             updateBuildingProduction(building, qtd, key);
         }
     }
+    setInterval(checkAffordableBuildings, 100);
 }
 
 export function applyBuilding(x, y, buildingConfig, key) {
@@ -61,8 +62,6 @@ export function applyBuilding(x, y, buildingConfig, key) {
 
         updateBuildingProduction(buildingConfig, qtd, key);
 
-    } else {
-        createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + buildingConfig.name, "red");
     }
 }
 
@@ -102,5 +101,20 @@ export function applyBuildingBoost(buildingName, effect) {
     if (key) {
         let qtd = parseInt(localStorage.getItem(`${buildingName}Qtd`)) || 0;
         updateBuildingProduction(buildingConfig[key], qtd, key);
+    }
+}
+
+function checkAffordableBuildings() {
+    let melancias = parseFloat(localStorage.getItem("melancias")) || 0;
+    for (let key in buildingConfig) {
+        let price = parseInt(localStorage.getItem(`${buildingConfig[key].name}Price`)) || buildingConfig[key].initialPrice;
+        let buildingElement = document.getElementById(key);
+        if (buildingElement) {
+            if (melancias >= price) {
+                buildingElement.classList.remove('disabled');
+            } else {
+                buildingElement.classList.add('disabled');
+            }
+        }
     }
 }

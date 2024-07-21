@@ -26,6 +26,7 @@
 }
 
 .building {
+    transition: .1s ease-in;
     cursor: url(../images/pointer.cur), pointer;
     text-align: right;
     font-family: var(--fontText);

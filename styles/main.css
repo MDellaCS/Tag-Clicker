@@ -101,8 +101,7 @@ body {
 
 .disabled,
 .disabled:hover {
-    pointer-events: none;
-    opacity: 0.5;
-    filter: blur(2px);
-    cursor: not-allowed;
+    filter: brightness(60%) opacity(60%);
+    transform: scale(0.97);
+    cursor: url(../images/block.cur), not-allowed;
 }
