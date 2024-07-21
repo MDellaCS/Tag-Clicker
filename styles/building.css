@@ -35,11 +35,8 @@
     width: 80%;
     margin: .3rem;
 
-    border: .5rem solid #005315;
-    border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat;
-
+    border: .5rem solid var(--exterior);
     background: url(../images/bg2.png) no-repeat center/cover;
-    background-color: #9e0000;
     padding-right: 2rem;
 }
 

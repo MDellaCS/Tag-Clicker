@@ -98,5 +98,50 @@ export const upgradeConfig = {
         effect: 2,
         type: "buildingboost",
         targetBuilding: "Centro Industrial Melancístico"
+    },
+    upgrade13: {
+        name: "Treinamento Policial",
+        description: "Melândia produz o dobro de melancias",
+        text: "Agora a cidade vai ficar bem mais segura com essa nova tropa treinada",
+        price: 9000,
+        effect: 2,
+        type: "buildingboost",
+        targetBuilding: "Melândia"
+    },
+    upgrade14: {
+        name: "Lua 21C",
+        description: "Planeta de Melancias produz o dobro de melancias",
+        text: "Todo planeta solitário precisa de uma lua, até planetas de melancias",
+        price: 10000,
+        effect: 2,
+        type: "buildingboost",
+        targetBuilding: "Planeta de Melancias"
+    },
+    upgrade15: {
+        name: "",
+        description: "Máquina de Clonagem produz o dobro de melancias",
+        text: "",
+        price: 11000,
+        effect: 2,
+        type: "buildingboost",
+        targetBuilding: "Máquina de Clonagem"
+    },
+    upgrade16: {
+        name: "",
+        description: "Melancia Recursiva produz o dobro de melancias",
+        text: "",
+        price: 12000,
+        effect: 2,
+        type: "buildingboost",
+        targetBuilding: "Melancia Recursiva"
+    },
+    upgrade17: {
+        name: "",
+        description: "Portal Multidimensional produz o dobro de melancias",
+        text: "",
+        price: 13000,
+        effect: 2,
+        type: "buildingboost",
+        targetBuilding: "Portal Multidimensional"
     }
 };
