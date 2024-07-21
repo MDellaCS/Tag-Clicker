@@ -48,7 +48,6 @@ export function applyBuilding(x, y, buildingConfig, key) {
 
     let priceDisplay = document.getElementById("price" + key);
     let qtdDisplay = document.getElementById("qtd" + key);
-    let velDisplay = document.getElementById("vel" + key);
 
     if (melancias >= price) {
         modifyMelancias(price, false);
@@ -60,10 +59,7 @@ export function applyBuilding(x, y, buildingConfig, key) {
         qtdDisplay.innerText = ++qtd;
         localStorage.setItem(`${buildingConfig.name}Qtd`, qtd);
 
-        let vel = (buildingConfig.productionRate * qtd).toFixed(2);
-        velDisplay.innerText = vel;
-
-        updateBuildingProduction(buildingConfig, qtd);
+        updateBuildingProduction(buildingConfig, qtd, key);
 
     } else {
         createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + buildingConfig.name, "red");
@@ -71,16 +67,40 @@ export function applyBuilding(x, y, buildingConfig, key) {
 }
 
 function updateBuildingProduction(buildingConfig, qtd, key) {
-    let productionRate = buildingConfig.productionRate * qtd;
+    let buildingsBoost = JSON.parse(localStorage.getItem("buildingsBoost")) || {};
+    let boost = buildingsBoost[buildingConfig.name] || 1;
+
+    let productionRate = buildingConfig.productionRate * qtd * boost;
     setBuildingProduction(buildingConfig.name, productionRate);
 
     let velDisplay = document.getElementById("vel" + key);
-    let vel = (buildingConfig.productionRate * qtd).toFixed(2);
     if (velDisplay) {
-        velDisplay.innerText = vel;
+        velDisplay.innerText = productionRate.toFixed(2);
     }
 }
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export function applyBuildingBoost(buildingName, effect) {
+    let buildingsBoost = JSON.parse(localStorage.getItem("buildingsBoost")) || {};
+
+    // Initialize the boost for the building if it doesn't exist
+    if (!buildingsBoost[buildingName]) {
+        buildingsBoost[buildingName] = 1;
+    }
+
+    // Apply the boost
+    buildingsBoost[buildingName] *= effect;
+
+    // Save back to localStorage
+    localStorage.setItem("buildingsBoost", JSON.stringify(buildingsBoost));
+
+    // Update the production display
+    let key = Object.keys(buildingConfig).find(k => buildingConfig[k].name === buildingName);
+    if (key) {
+        let qtd = parseInt(localStorage.getItem(`${buildingName}Qtd`)) || 0;
+        updateBuildingProduction(buildingConfig[key], qtd, key);
+    }
 }

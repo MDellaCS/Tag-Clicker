@@ -2,16 +2,16 @@
     visibility: hidden;
     position: absolute;
     z-index: 2;
-    background-color: #006315;
-    border: solid .2em #00460f;
-    width: 240px;
+    background-color: var(--exterior-hover);
+    border: solid .2em var(--exterior);
+    width: 360px;
     padding: 1rem;
     border-radius: 1em;
     pointer-events: none;
 }
 
 .tooltip .h1 {
-    margin: 0 0.5rem -.5rem 0.5rem;
+    margin: 0 .5rem -.5rem .5rem;
 }
 
 .tooltip .h2 {

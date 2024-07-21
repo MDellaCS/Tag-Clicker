@@ -2,6 +2,7 @@ import { createFloatingText } from './createFloatingText.js';
 import { modifyMelancias } from './modifyMelancias.js';
 import { upgradeConfig } from './upgradeConfig.js';
 import { formatNumber } from './formatNumber.js';
+import { applyBuildingBoost } from './building.js';
 
 export function loadUpgrades() {
 
@@ -51,6 +52,10 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
         upgradesPurchased[upgradeConfig.name] = (upgradesPurchased[upgradeConfig.name] || 0) + 1;
         localStorage.setItem("upgradesPurchased", JSON.stringify(upgradesPurchased));
 
+        if (upgradeConfig.type === "buildingboost") {
+            applyBuildingBoost(upgradeConfig.targetBuilding, upgradeConfig.effect);
+        }
+
         loadBoughtUpgrades(key);
 
         const upgradeElement = document.getElementById(key);
@@ -78,14 +83,14 @@ function loadBoughtUpgrades(key) {
     upgradeElement.id = key;
 
     upgradeElement.innerHTML = `
-                <img id="upIMG" src="images/upgrades/${key}.png">
+        <img id="upIMG" src="images/upgrades/${key}.png">
 
-                <div class="tooltip">
-                    <p class="h1">${upgrade.name}</p><br />
-                    <p class="h2">${upgrade.description}</p>
-                    <p class="h3">${upgrade.text}</p>
-                </div>
-            `;
+        <div class="tooltip">
+            <p class="h1">${upgrade.name}</p><br />
+            <p class="h2">${upgrade.description}</p>
+            <p class="h3">${upgrade.text}</p>
+        </div>
+    `;
 
     upgradesContainer.appendChild(upgradeElement);
 

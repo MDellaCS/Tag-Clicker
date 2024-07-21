@@ -21,9 +21,9 @@
     width: 20%;
 
     border: .5rem solid #005315;
-    /* border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
+    border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat;
 
-    /* background: url(../images/buildings/bg.png) no-repeat center/cover; */
+    background: url(../images/bg2.png) no-repeat center/cover;
     background-color: #303030;
 }
 
@@ -49,7 +49,7 @@
     position: absolute;
     justify-content: flex-start;
     margin: auto;
-    width: 70%;
+    width: 90%;
     bottom: 10%;
     margin: 2rem;
 }
@@ -69,9 +69,9 @@
 
 
     border: .2rem solid #005315;
-    /* border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
+    border-image: url(../images/border1.png) 25% 25% 25% 25% / .2rem repeat;
 
-    /* background: url(../images/buildings/bg.png) no-repeat center/cover; */
+    background: url(../images/bg2.png) no-repeat center/cover;
     background-color: #303030;
 }
 

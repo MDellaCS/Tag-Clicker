@@ -36,9 +36,9 @@
     margin: .3rem;
 
     border: .5rem solid #005315;
-    /* border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat; */
+    border-image: url(../images/border1.png) 25% 25% 25% 25% / 1rem repeat;
 
-    /* background: url(../images/buildings/bg.png) no-repeat center/cover; */
+    background: url(../images/bg2.png) no-repeat center/cover;
     background-color: #9e0000;
     padding-right: 2rem;
 }
@@ -53,7 +53,6 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    border-right: 8px solid white;
 }
 
 .buildingQTD {
