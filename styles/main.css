@@ -65,7 +65,7 @@ body {
 }
 
 body {
-    background-image: url(../../images/bg.png);
+    background-image: url(../images/bg1.png);
     background-size: cover;
     cursor: url(../images/cursor.cur), auto;
 }
