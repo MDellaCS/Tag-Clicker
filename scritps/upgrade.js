@@ -68,7 +68,7 @@ export function applyUpgrade(x, y, upgradeConfig, key) {
         }
 
     } else {
-        createFloatingText(x, y, "Faltam " + (price - melancias) + " melancias para comprar " + upgradeConfig.name, "red");
+        createFloatingText(x, y, "Faltam " + (price - melancias).toFixed(0) + " melancias para comprar " + upgradeConfig.name, "red");
     }
 }
 
